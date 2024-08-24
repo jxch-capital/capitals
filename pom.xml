@@ -10,8 +10,12 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>stock4j-spring-boot-starter</module>
         <module>crawler-common</module>
+        <module>stock4j-api3-starter</module>
+        <module>stock4j-api</module>
+        <module>stock4j-webapp</module>
+        <module>stock4j-webapp-api</module>
+        <module>capitals-cloud-common</module>
     </modules>
 
     <parent>

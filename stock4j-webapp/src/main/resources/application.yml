@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: Stock4j
+  profiles:
+    active: dev
+  jackson:
+    time-zone: GMT+8
+server:
+  port: 28080
+
+
