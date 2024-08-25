@@ -16,6 +16,7 @@
         <module>stock4j-webapp</module>
         <module>stock4j-webapp-api</module>
         <module>capitals-cloud-common</module>
+        <module>cloud-devtools-starter</module>
     </modules>
 
     <parent>
@@ -33,6 +34,7 @@
         <fastjson2.version>2.0.52</fastjson2.version>
         <hutool.version>5.8.31</hutool.version>
         <mapstruct.version>1.6.0</mapstruct.version>
+        <sleuth.version>3.1.11</sleuth.version>
         <capitals.version>1.0-SNAPSHOT</capitals.version>
     </properties>
 
@@ -52,7 +54,11 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-sleuth</artifactId>
+                <version>${sleuth.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.mapstruct</groupId>
                 <artifactId>mapstruct</artifactId>
