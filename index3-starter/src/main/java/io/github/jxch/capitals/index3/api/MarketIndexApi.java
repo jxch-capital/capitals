@@ -1,4 +1,4 @@
-package io.github.jxch.index3.api;
+package io.github.jxch.capitals.index3.api;
 
 public interface MarketIndexApi<T, R> {
 

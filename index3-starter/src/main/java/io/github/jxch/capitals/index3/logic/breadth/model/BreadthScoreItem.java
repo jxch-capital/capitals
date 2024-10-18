@@ -1,4 +1,4 @@
-package io.github.jxch.index3.logic.breadth.model;
+package io.github.jxch.capitals.index3.logic.breadth.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

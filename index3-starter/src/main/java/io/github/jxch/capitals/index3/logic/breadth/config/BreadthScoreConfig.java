@@ -1,4 +1,4 @@
-package io.github.jxch.index3.logic.breadth.config;
+package io.github.jxch.capitals.index3.logic.breadth.config;
 
 import okhttp3.Request;
 import org.springframework.context.annotation.Bean;

@@ -1,8 +1,8 @@
-package io.github.jxch.index3.dataviz;
+package io.github.jxch.capitals.index3.dataviz;
 
 import com.alibaba.fastjson2.JSON;
-import io.github.jxch.index3.config.MarketIndexAutoConfig;
-import io.github.jxch.index3.dataviz.model.DatavizGraphDataRes;
+import io.github.jxch.capitals.index3.config.MarketIndexAutoConfig;
+import io.github.jxch.capitals.index3.dataviz.model.DatavizGraphDataRes;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

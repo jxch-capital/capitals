@@ -1,7 +1,7 @@
-package io.github.jxch.index3.logic.breadth;
+package io.github.jxch.capitals.index3.logic.breadth;
 
 import com.alibaba.fastjson2.JSON;
-import io.github.jxch.index3.config.MarketIndexAutoConfig;
+import io.github.jxch.capitals.index3.config.MarketIndexAutoConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

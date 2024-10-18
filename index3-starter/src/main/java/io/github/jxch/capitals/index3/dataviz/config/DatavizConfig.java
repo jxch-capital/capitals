@@ -1,4 +1,4 @@
-package io.github.jxch.index3.dataviz.config;
+package io.github.jxch.capitals.index3.dataviz.config;
 
 import okhttp3.Request;
 import org.springframework.context.annotation.Bean;

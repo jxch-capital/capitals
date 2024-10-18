@@ -1,4 +1,4 @@
-package io.github.jxch.index3.logic.breadth.model;
+package io.github.jxch.capitals.index3.logic.breadth.model;
 
 import cn.hutool.core.date.DateUtil;
 import lombok.AllArgsConstructor;

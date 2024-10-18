@@ -1,11 +1,11 @@
-package io.github.jxch.index3.dataviz;
+package io.github.jxch.capitals.index3.dataviz;
 
 import com.alibaba.fastjson2.JSONObject;
 import io.github.jxch.capitals.crawler.common.config.CrawlerAutoConfig;
-import io.github.jxch.index3.api.MarketIndexApi;
-import io.github.jxch.index3.config.MarketIndexAutoConfig;
-import io.github.jxch.index3.dataviz.config.DatavizConfig;
-import io.github.jxch.index3.dataviz.model.DatavizGraphDataRes;
+import io.github.jxch.capitals.index3.api.MarketIndexApi;
+import io.github.jxch.capitals.index3.config.MarketIndexAutoConfig;
+import io.github.jxch.capitals.index3.dataviz.config.DatavizConfig;
+import io.github.jxch.capitals.index3.dataviz.model.DatavizGraphDataRes;
 import jakarta.annotation.Resource;
 import lombok.SneakyThrows;
 import okhttp3.OkHttpClient;

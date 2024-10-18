@@ -1,4 +1,4 @@
-package io.github.jxch.index3.dataviz.model;
+package io.github.jxch.capitals.index3.dataviz.model;
 
 import com.alibaba.fastjson2.annotation.JSONField;
 import lombok.Data;
