@@ -1,5 +1,6 @@
 package io.github.jxch.capitals.stock4j.api;
 
+import cn.hutool.core.date.DateUtil;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,9 +17,9 @@ import java.util.Date;
 @AllArgsConstructor
 @Accessors(chain = true)
 public class StockParam {
-    private String code;
+    private String code = "SPY";
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private Date start;
+    private Date start = DateUtil.offsetYear(Calendar.getInstance().getTime(), -1);
     @Builder.Default
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private Date end = Calendar.getInstance().getTime();
