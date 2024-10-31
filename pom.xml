@@ -18,6 +18,8 @@
         <module>capitals-cloud-common</module>
         <module>cloud-devtools-starter</module>
         <module>index3-starter</module>
+        <module>indicator-starter</module>
+        <module>chart-webapp</module>
     </modules>
 
     <parent>
