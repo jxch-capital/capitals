@@ -6,7 +6,7 @@
     <parent>
         <groupId>io.github.jxch</groupId>
         <artifactId>capitals</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>${revision}</version>
     </parent>
 
     <artifactId>stock4j-webapp</artifactId>
@@ -30,12 +30,10 @@
         <dependency>
             <groupId>io.github.jxch</groupId>
             <artifactId>stock4j-api3-starter</artifactId>
-            <version>${capitals.version}</version>
         </dependency>
         <dependency>
             <groupId>io.github.jxch</groupId>
             <artifactId>stock4j-webapp-api</artifactId>
-            <version>${capitals.version}</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>

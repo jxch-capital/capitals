@@ -6,7 +6,7 @@
 
     <groupId>io.github.jxch</groupId>
     <artifactId>capitals</artifactId>
-    <version>${capitals.version}</version>
+    <version>${revision}</version>
     <packaging>pom</packaging>
 
     <modules>
@@ -29,6 +29,7 @@
     </parent>
 
     <properties>
+        <revision>1.0-SNAPSHOT</revision>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -41,11 +42,18 @@
         <jfreechart.version>1.5.5</jfreechart.version>
         <ta4j.version>0.17</ta4j.version>
         <jsoup.version>1.18.1</jsoup.version>
-        <capitals.version>1.0-SNAPSHOT</capitals.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>io.github.jxch</groupId>
+                <artifactId>capitals-dependencies</artifactId>
+                <version>${revision}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>

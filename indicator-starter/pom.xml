@@ -6,7 +6,7 @@
     <parent>
         <groupId>io.github.jxch</groupId>
         <artifactId>capitals</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>${revision}</version>
     </parent>
 
     <artifactId>indicator-starter</artifactId>
@@ -42,7 +42,6 @@
         <dependency>
             <groupId>io.github.jxch</groupId>
             <artifactId>stock4j-api</artifactId>
-            <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 
