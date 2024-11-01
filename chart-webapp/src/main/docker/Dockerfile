@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends tzdata fontconf
 RUN mkdir /env && echo "$(curl -s ifconfig.me)" > /env/ip
 
 ENV PROFILES_ACTIVE=prod
-ENV SERVER_PORT=9005
+ENV SERVER_PORT=8080
 ENV SERVER_IP=127.0.0.1
 EXPOSE 8080
 
