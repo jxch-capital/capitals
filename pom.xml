@@ -19,9 +19,9 @@
         <module>indicator-starter</module>
         <module>stock4j-api3-starter</module>
         <module>stock4j-api</module>
-<!--        <module>stock4j-webapp-api</module>-->
-<!--        <module>stock4j-webapp</module>-->
-<!--        <module>chart-webapp</module>-->
+        <module>stock4j-webapp-api</module>
+        <module>stock4j-webapp</module>
+        <module>chart-webapp</module>
     </modules>
 
     <parent>
@@ -31,7 +31,7 @@
     </parent>
 
     <properties>
-        <revision>1.0.0.100</revision>
+        <revision>1.0.0.101</revision>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
