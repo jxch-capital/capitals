@@ -32,13 +32,13 @@ public class BreadthScoreRes {
         return getItemList().stream().map(BreadthScoreItem::getType).distinct().sorted().toList();
     }
 
-    public List<LocalDate> getDates() {
-        return getItemList().stream().map(BreadthScoreItem::getDate).distinct().sorted().toList();
+    public List<BreadthScoreItem> getScoreByType(String type) {
+        return getItemList().stream().filter(item -> Objects.equals(type, item.getType()))
+                .sorted(Comparator.comparing(BreadthScoreItem::getDate).reversed()).toList();
     }
 
-    public List<BreadthScoreItem> getRowByData(LocalDate date) {
-        return getItemList().stream().filter(item -> Objects.equals(date, item.getDate()))
-                .sorted(Comparator.comparing(BreadthScoreItem::getType)).toList();
+    public List<LocalDate> getDate() {
+        return getItemList().stream().map(BreadthScoreItem::getDate).distinct().sorted(Comparator.reverseOrder()).toList();
     }
 
     @Data

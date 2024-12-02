@@ -16,4 +16,6 @@ public class BreathParam {
     private int length = 300;
     @Builder.Default
     private boolean showDate = false;
+    @Builder.Default
+    private Integer cellSize = 20;
 }
