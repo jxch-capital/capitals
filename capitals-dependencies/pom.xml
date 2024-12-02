@@ -49,6 +49,11 @@
                 <artifactId>capitals-cloud-common</artifactId>
                 <version>${revision}</version>
             </dependency>
+            <dependency>
+                <groupId>io.github.jxch</groupId>
+                <artifactId>index3-starter</artifactId>
+                <version>${revision}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
