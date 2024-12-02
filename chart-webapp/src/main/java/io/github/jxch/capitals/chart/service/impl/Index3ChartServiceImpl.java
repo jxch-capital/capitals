@@ -32,7 +32,7 @@ public class Index3ChartServiceImpl implements Index3ChartService, KeyGenerator 
     private final BreadthScoreApi breadthScoreApi;
 
     @Override
-    @Cacheable(cacheNames = "breath", keyGenerator = "index3ChartServiceImpl")
+    @Cacheable(cacheNames = "Index3ChartServiceImpl.breath", keyGenerator = "index3ChartServiceImpl")
     public BufferedImage breath(BreathParam param) {
         BreadthScoreRes breadth = breadthScoreApi.breadthScore();
 
