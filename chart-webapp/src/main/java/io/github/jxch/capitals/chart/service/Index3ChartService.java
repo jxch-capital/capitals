@@ -6,6 +6,6 @@ import java.awt.image.BufferedImage;
 
 public interface Index3ChartService {
 
-    BufferedImage breathUS(BreathParam param);
+    BufferedImage breath(BreathParam param);
 
 }

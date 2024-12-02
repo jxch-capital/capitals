@@ -19,8 +19,8 @@ class Index3ChartServiceImplTest {
     private Index3ChartServiceImpl index3ChartService;
 
     @Test
-    void breathUS() throws IOException {
-        BufferedImage image = index3ChartService.breathUS(BreathParam.builder().length(200).build());
+    void breath() throws IOException {
+        BufferedImage image = index3ChartService.breath(BreathParam.builder().length(200).build());
 
         File file = new File("D:\\jxch-capital\\capitals\\tmp\\test.png");
         ImageIO.write(image, "PNG", file);

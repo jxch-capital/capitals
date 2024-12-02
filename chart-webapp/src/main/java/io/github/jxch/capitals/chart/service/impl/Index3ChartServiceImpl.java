@@ -8,13 +8,18 @@ import io.github.jxch.capitals.index3.logic.breadth.BreadthScoreApi;
 import io.github.jxch.capitals.index3.logic.breadth.model.BreadthScoreItem;
 import io.github.jxch.capitals.index3.logic.breadth.model.BreadthScoreRes;
 import lombok.RequiredArgsConstructor;
-import lombok.SneakyThrows;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.stereotype.Service;
 
 import javax.swing.*;
-import javax.swing.table.*;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.lang.reflect.Method;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -23,12 +28,12 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class Index3ChartServiceImpl implements Index3ChartService {
+public class Index3ChartServiceImpl implements Index3ChartService, KeyGenerator {
     private final BreadthScoreApi breadthScoreApi;
 
     @Override
-    @SneakyThrows
-    public BufferedImage breathUS(BreathParam param) {
+    @Cacheable(cacheNames = "breath", keyGenerator = "index3ChartServiceImpl")
+    public BufferedImage breath(BreathParam param) {
         BreadthScoreRes breadth = breadthScoreApi.breadthScore();
 
         List<String> columns = new ArrayList<>(breadth.getTypes());
@@ -65,6 +70,11 @@ public class Index3ChartServiceImpl implements Index3ChartService {
         g2dRotated.drawImage(image, 0, 0, null);
 
         return rotatedImage;
+    }
+
+    @Override
+    public Object generate(Object target, Method method, Object... params) {
+        return LocalDate.now() + params[0].toString();
     }
 
 

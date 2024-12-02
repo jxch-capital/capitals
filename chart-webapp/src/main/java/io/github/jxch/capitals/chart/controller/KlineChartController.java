@@ -19,7 +19,7 @@ public class KlineChartController {
     private final KlineChartService klineChartService;
 
     @RequestMapping("/kline")
-    public Mono<ResponseEntity<DefaultDataBuffer>> imageRoute(@RequestBody KlineChartParam param) {
+    public Mono<ResponseEntity<DefaultDataBuffer>> kline(@RequestBody KlineChartParam param) {
         return WebfluxChartUtil.image2Mono(() -> klineChartService.klineChart(param));
     }
 
