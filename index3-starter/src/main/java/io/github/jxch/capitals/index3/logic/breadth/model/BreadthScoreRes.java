@@ -7,7 +7,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
+import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 
 @Data
 public class BreadthScoreRes {
@@ -23,6 +26,19 @@ public class BreadthScoreRes {
                 .type(item.get(2))
                 .score(Integer.valueOf(item.get(1).trim()))
                 .build()).toList();
+    }
+
+    public List<String> getTypes() {
+        return getItemList().stream().map(BreadthScoreItem::getType).distinct().sorted().toList();
+    }
+
+    public List<LocalDate> getDates() {
+        return getItemList().stream().map(BreadthScoreItem::getDate).distinct().sorted().toList();
+    }
+
+    public List<BreadthScoreItem> getRowByData(LocalDate date) {
+        return getItemList().stream().filter(item -> Objects.equals(date, item.getDate()))
+                .sorted(Comparator.comparing(BreadthScoreItem::getType)).toList();
     }
 
     @Data
