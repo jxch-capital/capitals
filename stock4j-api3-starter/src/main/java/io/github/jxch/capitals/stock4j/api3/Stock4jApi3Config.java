@@ -2,13 +2,13 @@ package io.github.jxch.capitals.stock4j.api3;
 
 import lombok.Data;
 import okhttp3.OkHttpClient;
+import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
 
 @Data
-@Configuration
+@AutoConfiguration
 @ComponentScan
 public class Stock4jApi3Config {
     public final static String STOCK_API = "CAPITAL_STOCK4J_API";

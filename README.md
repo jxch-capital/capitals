@@ -14,6 +14,12 @@
   - [x] chart-webapp
   - [x] capitals-dependencies
 
+- v1.1.0
+  - [ ] Data Center
+    - [ ] DS3
+    - [ ] Stream
+
+
 
 
 

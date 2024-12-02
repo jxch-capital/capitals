@@ -1,0 +1,12 @@
+services:
+  chart-webapp:
+    image: jxch/capitals-chart-webapp
+    ports:
+      - "8080:8080"
+
+
+
+
+
+
+
