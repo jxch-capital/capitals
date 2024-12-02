@@ -1,4 +1,4 @@
 crawler:
   proxy:
-    enable:true
+    enable: true
 

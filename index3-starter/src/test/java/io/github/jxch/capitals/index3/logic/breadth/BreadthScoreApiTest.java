@@ -7,14 +7,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Profile;
 
 @Slf4j
-
-@Profile("application-test.yml")
 @SpringBootTest(classes = {MarketIndexAutoConfig.class, CrawlerAutoConfig.class})
-@ComponentScan("io.github.jxch.capitals.crawler.common")
 class BreadthScoreApiTest {
     @Autowired
     private BreadthScoreApi breadthScoreApi;
