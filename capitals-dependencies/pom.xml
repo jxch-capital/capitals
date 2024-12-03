@@ -54,6 +54,11 @@
                 <artifactId>index3-starter</artifactId>
                 <version>${revision}</version>
             </dependency>
+            <dependency>
+                <groupId>io.github.jxch</groupId>
+                <artifactId>news-starter</artifactId>
+                <version>${revision}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

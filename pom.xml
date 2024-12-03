@@ -22,6 +22,7 @@
         <module>stock4j-webapp-api</module>
         <module>stock4j-webapp</module>
         <module>chart-webapp</module>
+        <module>news-starter</module>
     </modules>
 
     <parent>
