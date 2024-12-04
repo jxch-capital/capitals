@@ -6,13 +6,13 @@ import io.github.jxch.capitals.stock4j.api.StockParam;
 import io.github.jxch.capitals.stock4j.api.StockRes;
 import io.github.jxch.capitals.stock4j.api3.lb.StockLBApi;
 import io.github.jxch.capitals.stock4j.webapp.api.Stock4jApi;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequiredArgsConstructor
 public class Stock4jController implements Stock4jApi {
-    @Autowired
-    private StockLBApi stockLBApi;
+    private final StockLBApi stockLBApi;
 
     @Override
     public StockRes query(StockParam param) {

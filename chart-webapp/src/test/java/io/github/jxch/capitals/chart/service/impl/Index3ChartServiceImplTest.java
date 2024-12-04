@@ -2,6 +2,7 @@ package io.github.jxch.capitals.chart.service.impl;
 
 import io.github.jxch.capitals.chart.ChartWebApp;
 import io.github.jxch.capitals.chart.model.BreathParam;
+import io.github.jxch.capitals.chart.model.FearGreedParam;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,4 +27,11 @@ class Index3ChartServiceImplTest {
         ImageIO.write(image, "PNG", file);
     }
 
+    @Test
+    void fearGreed() throws IOException {
+        BufferedImage image = index3ChartService.fearGreed(FearGreedParam.builder().build());
+
+        File file = new File("D:\\jxch-capital\\capitals\\tmp\\test.png");
+        ImageIO.write(image, "PNG", file);
+    }
 }

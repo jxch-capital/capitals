@@ -1,11 +1,20 @@
 package io.github.jxch.capitals.chart.service.impl;
 
 import io.github.jxch.capitals.chart.model.BreathParam;
+import io.github.jxch.capitals.chart.model.FearGreedParam;
 import io.github.jxch.capitals.chart.service.Index3ChartService;
+import io.github.jxch.capitals.index3.dataviz.DatavizGraphDataApi;
+import io.github.jxch.capitals.index3.dataviz.model.DatavizGraphDataRes;
 import io.github.jxch.capitals.index3.logic.breadth.BreadthScoreApi;
 import io.github.jxch.capitals.index3.logic.breadth.model.BreadthScoreItem;
 import io.github.jxch.capitals.index3.logic.breadth.model.BreadthScoreRes;
 import lombok.RequiredArgsConstructor;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.renderer.category.LineAndShapeRenderer;
+import org.jfree.data.category.CategoryDataset;
+import org.jfree.data.category.DefaultCategoryDataset;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.stereotype.Service;
@@ -14,6 +23,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.lang.reflect.Method;
 import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.List;
 
 
@@ -21,6 +31,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class Index3ChartServiceImpl implements Index3ChartService, KeyGenerator {
     private final BreadthScoreApi breadthScoreApi;
+    private final DatavizGraphDataApi datavizGraphDataApi;
 
     @Override
     public Object generate(Object target, Method method, Object... params) {
@@ -62,6 +73,31 @@ public class Index3ChartServiceImpl implements Index3ChartService, KeyGenerator 
         return image;
     }
 
+    @Override
+    @Cacheable(cacheNames = "Index3ChartServiceImpl.fearGreed", keyGenerator = "index3ChartServiceImpl")
+    public BufferedImage fearGreed(FearGreedParam param) {
+        var fg = datavizGraphDataApi.graphData().getFearAndGreedHistorical();
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        fg.getData().stream().sorted(Comparator.comparing(DatavizGraphDataRes.XYData::getX).reversed())
+                .forEach(data -> dataset.addValue(data.getY(), "FearGreed", data.getY()));
+        JFreeChart chart = ChartFactory.createLineChart(fg.getRating().toUpperCase() + " - " + String.format("%.1f", fg.getScore()), "Date", "FG", dataset);
+
+        CategoryPlot plot = chart.getCategoryPlot();
+        plot.setRenderer(new FearGreedRenderer(dataset));
+        plot.getDomainAxis().setVisible(false); // 隐藏 X 轴
+        plot.getDomainAxis().setTickLabelsVisible(false); // 隐藏 X 轴标签
+        plot.getRangeAxis().setVisible(false); // 隐藏 Y 轴
+        plot.getRangeAxis().setTickLabelsVisible(false); // 隐藏 Y 轴标签
+        plot.setBackgroundPaint(Color.BLACK);  // 绘图区域背景
+        plot.setOutlinePaint(null);            // 去掉外边框
+        plot.setDomainGridlinePaint(Color.GRAY); // X 轴网格线颜色
+        plot.setRangeGridlinePaint(Color.GRAY); // Y 轴网格线颜色
+        chart.getLegend().setVisible(false);
+        chart.setBackgroundPaint(Color.BLACK); // 图表背景
+        chart.getTitle().setPaint(fg.getScore() > 50 ? Color.GREEN : Color.RED); // 标题字体颜色
+
+        return chart.createBufferedImage(param.getWidth(), param.getHeight());
+    }
 
     private Color getColorForValue(double value) {
         if (value < 0) value = 0;
@@ -71,6 +107,29 @@ public class Index3ChartServiceImpl implements Index3ChartService, KeyGenerator 
         int green = (int) (value * 2.55);      // 0 -> 255 (Green)
 
         return new Color(red, green, 0);  // RGB color (Red, Green, Blue)
+    }
+
+    @RequiredArgsConstructor
+    private static class FearGreedRenderer extends LineAndShapeRenderer {
+        private final CategoryDataset dataset;
+
+        @Override
+        public Paint getItemPaint(int row, int column) {
+            setDefaultShapesVisible(false);
+            Number value = dataset.getValue(row, column);
+
+            if (value.doubleValue() > 70) {
+                return Color.WHITE;
+            } else if (value.doubleValue() > 55) {
+                return Color.GREEN;
+            } else if (value.doubleValue() > 45) {
+                return Color.ORANGE;
+            } else if (value.doubleValue() > 30) {
+                return Color.RED;
+            } else {
+                return Color.WHITE;
+            }
+        }
     }
 
 }

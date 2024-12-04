@@ -1,6 +1,7 @@
 package io.github.jxch.capitals.chart.controller;
 
 import io.github.jxch.capitals.chart.model.BreathParam;
+import io.github.jxch.capitals.chart.model.FearGreedParam;
 import io.github.jxch.capitals.chart.service.Index3ChartService;
 import io.github.jxch.capitals.crawler.common.util.WebfluxChartUtil;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +21,11 @@ public class Index3ChartController {
     @RequestMapping("/breath")
     public Mono<ResponseEntity<DefaultDataBuffer>> breath(@RequestBody BreathParam param) {
         return WebfluxChartUtil.image2Mono(() -> index3ChartService.breath(param));
+    }
+
+    @RequestMapping("/fearGreed")
+    public Mono<ResponseEntity<DefaultDataBuffer>> fearGreed(@RequestBody FearGreedParam param) {
+        return WebfluxChartUtil.image2Mono(() -> index3ChartService.fearGreed(param));
     }
 
 }
