@@ -94,7 +94,7 @@ public class Index3ChartServiceImpl implements Index3ChartService, KeyGenerator 
         plot.setRangeGridlinePaint(Color.GRAY); // Y 轴网格线颜色
         chart.getLegend().setVisible(false);
         chart.setBackgroundPaint(Color.BLACK); // 图表背景
-        chart.getTitle().setPaint(fg.getScore() > 50 ? Color.GREEN : Color.RED); // 标题字体颜色
+        chart.getTitle().setPaint(getColorForValue(fg.getScore())); // 标题字体颜色
 
         return chart.createBufferedImage(param.getWidth(), param.getHeight());
     }
