@@ -110,25 +110,13 @@ public class Index3ChartServiceImpl implements Index3ChartService, KeyGenerator 
     }
 
     @RequiredArgsConstructor
-    private static class FearGreedRenderer extends LineAndShapeRenderer {
+    private class FearGreedRenderer extends LineAndShapeRenderer {
         private final CategoryDataset dataset;
 
         @Override
         public Paint getItemPaint(int row, int column) {
             setDefaultShapesVisible(false);
-            Number value = dataset.getValue(row, column);
-
-            if (value.doubleValue() > 70) {
-                return Color.WHITE;
-            } else if (value.doubleValue() > 55) {
-                return Color.GREEN;
-            } else if (value.doubleValue() > 45) {
-                return Color.ORANGE;
-            } else if (value.doubleValue() > 30) {
-                return Color.RED;
-            } else {
-                return Color.WHITE;
-            }
+            return getColorForValue(dataset.getValue(row, column).doubleValue());
         }
     }
 
