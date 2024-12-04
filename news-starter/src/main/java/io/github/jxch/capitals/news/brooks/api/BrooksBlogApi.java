@@ -83,11 +83,16 @@ public class BrooksBlogApi implements CapitalsNewApi {
     }
 
     @SneakyThrows
-    public URL newArticleFirstChartUrl() {
+    public URL newArticleFirstKChartUrl() {
         Document doc = Jsoup.parse(newArticleHtml());
         Elements img = doc.select("img");
         if (!img.isEmpty()) {
-            return new URL(img.get(0).attr("src"));
+            for (org.jsoup.nodes.Element element : img) {
+                String url = element.attr("src");
+                if (!url.contains("Review")) {
+                    return new URL(url);
+                }
+            }
         }
         return null;
     }

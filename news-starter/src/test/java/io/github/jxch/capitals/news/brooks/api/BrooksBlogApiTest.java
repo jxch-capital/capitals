@@ -16,8 +16,8 @@ class BrooksBlogApiTest {
     private BrooksBlogApi brooksBlogApi;
 
     @Test
-    void newArticleFirstChartUrl() {
-        URL url = brooksBlogApi.newArticleFirstChartUrl();
+    void newArticleFirstKChartUrl() {
+        URL url = brooksBlogApi.newArticleFirstKChartUrl();
         log.info(url.toString());
     }
 

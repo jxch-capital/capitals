@@ -19,7 +19,7 @@ public class BlogChartServiceImpl implements BlogChartService {
     @Override
     @SneakyThrows
     public BufferedImage brooksFirstArticleChart() {
-        URL url = brooksBlogApi.newArticleFirstChartUrl();
+        URL url = brooksBlogApi.newArticleFirstKChartUrl();
         return Objects.nonNull(url) ? ImageIO.read(url)
                 : new BufferedImage(0, 0, BufferedImage.TYPE_INT_RGB);
     }
