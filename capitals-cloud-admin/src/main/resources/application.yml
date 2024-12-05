@@ -13,3 +13,10 @@ spring:
   cloud:
     zookeeper:
       connect-string: jiangxicheng.online:2181
+    config:
+      server:
+        git:
+          uri: https://github.com/jxch-capital/capitals
+          searchPaths:
+            - 'capitals-config-center'
+          cloneOnStart: true
