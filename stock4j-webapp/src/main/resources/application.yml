@@ -1,9 +1,24 @@
+server:
+  port: 18082
+
 spring:
   application:
     name: Stock4j
   profiles:
     active: dev
-server:
-  port: 28080
+  datasource:
+    url: jdbc:postgresql://jiangxicheng.online:15432/capitals
+    username: capitals
+    password: capitals
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate:
+        format_sql: true
+
 
 
