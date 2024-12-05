@@ -20,3 +20,9 @@ spring:
           searchPaths:
             - 'capitals-config-center'
           cloneOnStart: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

@@ -6,8 +6,6 @@ ADD chart-webapp.jar app.jar
 RUN apt-get update && apt-get install -y --no-install-recommends tzdata fontconfig && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' > /etc/timezone && apt-get install -y --no-install-recommends fonts-dejavu && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 ENV PROFILES_ACTIVE=prod
-ENV SERVER_PORT=8080
-ENV SERVER_IP=127.0.0.1
 EXPOSE 8080
 
-ENTRYPOINT ["sh", "-c", "export SERVER_IP=$(curl -s ifconfig.me) && java -Dspring.profiles.active=${PROFILES_ACTIVE} -Dspring.cloud.nacos.discovery.ip=${SERVER_IP} -Dspring.cloud.nacos.discovery.port=${SERVER_PORT} -Dserver.port=${SERVER_PORT} -jar app.jar"]
+ENTRYPOINT ["sh", "-c", "java -Dspring.profiles.active=${PROFILES_ACTIVE} -Dserver.port=8080 -jar app.jar"]
