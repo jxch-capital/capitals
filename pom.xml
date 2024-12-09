@@ -24,6 +24,7 @@
         <module>chart-webapp</module>
         <module>news-starter</module>
         <module>capitals-cloud-admin</module>
+        <module>capitals-cloud-config</module>
     </modules>
 
     <parent>
