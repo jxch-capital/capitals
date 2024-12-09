@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: Stock4j
+    name: Capitals-Stock4j
   profiles:
     active: dev
   datasource:
@@ -19,6 +19,19 @@ spring:
     properties:
       hibernate:
         format_sql: true
+  boot:
+    admin:
+      client:
+        url: http://jiangxicheng.online:17001
+        enabled: true
+  cloud:
+    zookeeper:
+      connect-string: jiangxicheng.online:2181
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 
 

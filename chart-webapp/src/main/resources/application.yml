@@ -8,7 +8,9 @@ spring:
       client:
         url: http://jiangxicheng.online:17001
         enabled: true
-
+  cloud:
+    zookeeper:
+      connect-string: jiangxicheng.online:2181
 
 management:
   endpoints:
