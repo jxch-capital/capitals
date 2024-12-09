@@ -49,6 +49,7 @@ import java.util.UUID;
 @ConfigurationProperties(prefix = "capitals.auth")
 public class CapitalsCloudSecurityConfig {
     private String redirectUri = "http://127.0.0.1:8080/";
+    private String clientSecret = "{noop}secret";
     private String clientId = "capitals";
     private String username = "capitals";
     private String password = "capitals";
@@ -99,7 +100,7 @@ public class CapitalsCloudSecurityConfig {
     public RegisteredClientRepository registeredClientRepository() {
         RegisteredClient oidcClient = RegisteredClient.withId(UUID.randomUUID().toString())
                 .clientId(clientId)
-                .clientSecret("{noop}secret")
+                .clientSecret(clientSecret)
                 .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
                 .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
                 .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)

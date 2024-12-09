@@ -12,6 +12,21 @@ spring:
   cloud:
     zookeeper:
       connect-string: jiangxicheng.online:2181
+  security:
+    oauth2:
+      client:
+        registration:
+          my-oauth-client:
+            client-id: capitals
+            client-secret: {noop}secret
+            authorization-grant-type: authorization_code
+            redirect-uri: "http://jiangxicheng.online:17002/login/oauth2/code/capitals"
+            scope: openid, profile
+        provider:
+          my-oauth-provider:
+            token-uri: http://jiangxicheng.online:17002/token
+            authorization-uri: http://jiangxicheng.online:17002/authorize
+            user-info-uri: http://jiangxicheng.online:17002/userinfo
 
 management:
   endpoints:
