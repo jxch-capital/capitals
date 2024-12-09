@@ -1,6 +1,6 @@
 spring:
   application:
-    name: Chart
+    name: Capitals-Chart
   profiles:
     active: dev
   boot:
