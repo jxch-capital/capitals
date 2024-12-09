@@ -1,0 +1,25 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: Capitals-Cloud-Config
+  boot:
+    admin:
+      client:
+        url: http://jiangxicheng.online:17001
+        enabled: true
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/jxch-capital/capitals
+          searchPaths:
+            - 'capitals-config-center'
+          cloneOnStart: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
