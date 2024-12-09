@@ -1,0 +1,44 @@
+services:
+  postgres:
+    image: postgres:latest
+    ports:
+      - "15432:5432"
+    environment:
+      POSTGRES_USER: capitals
+      POSTGRES_PASSWORD: capitals
+      POSTGRES_DB: capitals
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+  chart:
+    image: jxch/capitals-chart-webapp
+    ports:
+      - "18081:8080"
+    networks:
+      - cloud_bus
+  admin:
+    image: jxch/capitals-cloud-admin
+    ports:
+      - "17001:8080"
+    networks:
+      - cloud_bus
+  config:
+    image: jxch/capitals-cloud-config
+    ports:
+      - "17002:8080"
+    networks:
+      - cloud_bus
+
+volumes:
+  postgres_data:
+    driver_opts:
+      type: "nfs"
+      o: "addr=amd2.jiangxicheng.online,rw"
+      device: ":/srv/nfs/capitals/postgres_data"
+
+
+networks:
+  cloud_bus:
+    external: true
+
+
+
