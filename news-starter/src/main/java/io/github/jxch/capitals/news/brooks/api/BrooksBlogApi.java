@@ -1,6 +1,6 @@
 package io.github.jxch.capitals.news.brooks.api;
 
-import io.github.jxch.capitals.crawler.common.config.CrawlerAutoConfig;
+import io.github.jxch.capitals.crawler.common.CrawlerAutoConfig;
 import io.github.jxch.capitals.news.CapitalsNewApi;
 import io.github.jxch.capitals.news.brooks.config.BrooksBlogConfig;
 import io.github.jxch.capitals.news.brooks.model.BrooksBlogParam;

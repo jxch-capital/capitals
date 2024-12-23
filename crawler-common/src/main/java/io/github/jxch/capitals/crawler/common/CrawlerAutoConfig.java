@@ -1,19 +1,19 @@
-package io.github.jxch.capitals.crawler.common.config;
+package io.github.jxch.capitals.crawler.common;
 
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.OkHttpClient;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
 import java.net.InetSocketAddress;
 import java.net.Proxy;
 
 @Slf4j
-@AutoConfiguration
-@ComponentScan("io.github.jxch.capitals.crawler.common")
+@ComponentScan
+@Configuration
 public class CrawlerAutoConfig {
     public final static String OK_HTTP_CLIENT = "OK_HTTP_CLIENT";
 

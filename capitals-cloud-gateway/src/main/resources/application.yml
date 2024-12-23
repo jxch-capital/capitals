@@ -12,21 +12,26 @@ spring:
   cloud:
     zookeeper:
       connect-string: jiangxicheng.online:2181
+      discovery:
+        root: /services/${spring.profiles.active}/
   security:
     oauth2:
       client:
         registration:
-          my-oauth-client:
+          keycloak:
             client-id: capitals
-            client-secret: {noop}secret
+            client-secret: ObgtuH7bWX4fdI7hY5QI6BRqX7aMOVkw
+            scope: openid
             authorization-grant-type: authorization_code
-            redirect-uri: "http://jiangxicheng.online:17002/login/oauth2/code/capitals"
-            scope: openid, profile
+            redirect-uri: "http://jiangxicheng.online"
+            client-authentication-method: post
         provider:
-          my-oauth-provider:
-            token-uri: http://jiangxicheng.online:17002/token
-            authorization-uri: http://jiangxicheng.online:17002/authorize
-            user-info-uri: http://jiangxicheng.online:17002/userinfo
+          keycloak:
+            issuer-uri: http://jiangxicheng.online:8081/realms/Capitals
+      resourceserver:
+        jwt:
+          issuer-uri: http://jiangxicheng.online:8081/realms/Capitals
+
 
 management:
   endpoints:

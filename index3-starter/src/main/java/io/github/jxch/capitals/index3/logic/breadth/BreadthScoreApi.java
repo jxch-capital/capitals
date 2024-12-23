@@ -1,9 +1,9 @@
 package io.github.jxch.capitals.index3.logic.breadth;
 
 import com.alibaba.fastjson2.JSONObject;
-import io.github.jxch.capitals.crawler.common.config.CrawlerAutoConfig;
+import io.github.jxch.capitals.crawler.common.CrawlerAutoConfig;
 import io.github.jxch.capitals.index3.api.MarketIndexApi;
-import io.github.jxch.capitals.index3.config.MarketIndexAutoConfig;
+import io.github.jxch.capitals.index3.MarketIndexAutoConfig;
 import io.github.jxch.capitals.index3.logic.breadth.config.BreadthScoreConfig;
 import io.github.jxch.capitals.index3.logic.breadth.model.BreadthScoreRes;
 import jakarta.annotation.Resource;

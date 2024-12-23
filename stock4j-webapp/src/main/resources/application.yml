@@ -1,5 +1,5 @@
 server:
-  port: 18082
+  port: 8080
 
 spring:
   application:
@@ -7,7 +7,7 @@ spring:
   profiles:
     active: dev
   datasource:
-    url: jdbc:postgresql://jiangxicheng.online:15432/capitals
+    url: jdbc:postgresql://jiangxicheng.online:5432/capitals
     username: capitals
     password: capitals
     driver-class-name: org.postgresql.Driver
@@ -27,6 +27,25 @@ spring:
   cloud:
     zookeeper:
       connect-string: jiangxicheng.online:2181
+      discovery:
+        root: /services/${spring.profiles.active}/
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            client-id: capitals
+            client-secret: ObgtuH7bWX4fdI7hY5QI6BRqX7aMOVkw
+            scope: openid
+            authorization-grant-type: authorization_code
+#            redirect-uri: "http://localhost:8080/home"
+            client-authentication-method: client_secret_post
+        provider:
+          keycloak:
+            issuer-uri: http://jiangxicheng.online:8081/realms/Capitals
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://jiangxicheng.online:8081/realms/Capitals/protocol/openid-connect/certs
 
 management:
   endpoints:
@@ -35,3 +54,7 @@ management:
         include: "*"
 
 
+logging:
+  level:
+    org.springframework.security: debug
+    org.springframework.web: debug

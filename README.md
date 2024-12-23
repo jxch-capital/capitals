@@ -15,6 +15,7 @@
   - [x] capitals-dependencies
 
 - v1.1.0
+  - [ ] gateway - auth 及微服务集群集成
   - [ ] Data Center
     - [ ] DS3
     - [ ] Stream

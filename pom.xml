@@ -26,7 +26,6 @@
         <module>capitals-cloud-admin</module>
         <module>capitals-cloud-config</module>
         <module>capitals-cloud-gateway</module>
-        <module>capitals-cloud-auth</module>
     </modules>
 
     <parent>
@@ -58,6 +57,7 @@
         <postgresql.version>42.7.4</postgresql.version>
         <curator.version>5.7.1</curator.version>
         <spring-boot-admin.version>3.4.0</spring-boot-admin.version>
+        <vaadin.version>24.5.6</vaadin.version>
     </properties>
 
     <dependencyManagement>
@@ -88,6 +88,11 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-sleuth</artifactId>
                 <version>${sleuth.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.vaadin</groupId>
+                <artifactId>vaadin-spring-boot-starter</artifactId>
+                <version>${vaadin.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.mapstruct</groupId>

@@ -1,7 +1,7 @@
 package io.github.jxch.capitals.news.brooks.api;
 
-import io.github.jxch.capitals.crawler.common.config.CrawlerAutoConfig;
-import io.github.jxch.capitals.news.config.CapitalsNewsAutoConfig;
+import io.github.jxch.capitals.crawler.common.CrawlerAutoConfig;
+import io.github.jxch.capitals.news.CapitalsNewsAutoConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

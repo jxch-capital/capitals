@@ -11,6 +11,8 @@ spring:
   cloud:
     zookeeper:
       connect-string: jiangxicheng.online:2181
+      discovery:
+        root: /services/${spring.profiles.active}/
 
 management:
   endpoints:

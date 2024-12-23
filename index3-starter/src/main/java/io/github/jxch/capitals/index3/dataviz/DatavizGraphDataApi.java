@@ -1,9 +1,9 @@
 package io.github.jxch.capitals.index3.dataviz;
 
 import com.alibaba.fastjson2.JSONObject;
-import io.github.jxch.capitals.crawler.common.config.CrawlerAutoConfig;
+import io.github.jxch.capitals.crawler.common.CrawlerAutoConfig;
 import io.github.jxch.capitals.index3.api.MarketIndexApi;
-import io.github.jxch.capitals.index3.config.MarketIndexAutoConfig;
+import io.github.jxch.capitals.index3.MarketIndexAutoConfig;
 import io.github.jxch.capitals.index3.dataviz.config.DatavizConfig;
 import io.github.jxch.capitals.index3.dataviz.model.DatavizGraphDataRes;
 import jakarta.annotation.Resource;
