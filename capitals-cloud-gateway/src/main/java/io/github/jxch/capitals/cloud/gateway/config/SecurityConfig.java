@@ -10,29 +10,7 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
 @Configuration
 @EnableWebFluxSecurity
 public class SecurityConfig {
-    //    @Bean
-//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-//        http
-//                .sessionManagement(session -> session
-//                        .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
-//                )
-//                .authorizeHttpRequests(authorize -> authorize
-//                        .requestMatchers("/public/**").permitAll()
-//                        .anyRequest().authenticated()
-//                )
-//                .oauth2Login(oauth2 -> oauth2
-//                        .loginPage("/oauth2/authorization/keycloak")
-//                        .defaultSuccessUrl("/home", true)
-//                        .failureUrl("/login?error=true")
-//                )
-//                .logout(logout -> logout
-//                        .logoutSuccessUrl("/login?logout=true")
-//                        .permitAll()
-//                )
-//                .csrf(AbstractHttpConfigurer::disable);
-//
-//        return http.build();
-//    }
+
     @Bean
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
         http
@@ -45,4 +23,5 @@ public class SecurityConfig {
 
         return http.build();
     }
+
 }
