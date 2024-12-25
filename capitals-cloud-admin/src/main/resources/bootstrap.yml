@@ -2,4 +2,4 @@ spring:
   cloud:
     config:
       uri: http://jiangxicheng.online:17002
-      name: capitals-cloud-admin,discovery-zookeeper
+      name: capitals-cloud-admin,discovery-zookeeper,rabbitmq
