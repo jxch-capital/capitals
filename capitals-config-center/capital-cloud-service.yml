@@ -1,0 +1,22 @@
+spring:
+  boot:
+    admin:
+      client:
+        url: http://jiangxicheng.online:17001
+        enabled: true
+  cloud:
+    zookeeper:
+      connect-string: jiangxicheng.online:2181
+      discovery:
+        root: /services/${spring.profiles.active}/
+  rabbitmq:
+    host: jiangxicheng.online
+    port: 5672
+    username: rabbitmq
+    password: rabbitmq
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
