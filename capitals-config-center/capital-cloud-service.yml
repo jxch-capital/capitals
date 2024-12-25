@@ -2,7 +2,7 @@ spring:
   boot:
     admin:
       client:
-        url: jiangxicheng.online/inner/admin
+        url: http://jiangxicheng.online:17001
         enabled: true
   cloud:
     zookeeper:
