@@ -1,3 +1,6 @@
 spring:
   application:
     name: Capitals-Cloud-Gateway
+  security:
+    permits: /public/**,/inner/**,http://jiangxicheng.online:17001/**
+
