@@ -1,0 +1,12 @@
+spring:
+  boot:
+    admin:
+      client:
+        url: http://jiangxicheng.online:17001
+        enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
