@@ -16,6 +16,7 @@ public class SecurityConfig {
         http
                 .authorizeExchange(authorize -> authorize
                         .pathMatchers("/public/**").permitAll()
+                        .pathMatchers("/inner/**").permitAll()
                         .anyExchange().authenticated()
                 )
                 .oauth2Login(Customizer.withDefaults())
