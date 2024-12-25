@@ -1,27 +1,48 @@
 package io.github.jxch.capitals.cloud.gateway.config;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.web.server.SecurityWebFilterChain;
-import org.springframework.security.web.server.util.matcher.ServerWebExchangeMatchers;
 
-@EnableWebSecurity
+@Configuration
+@EnableWebFluxSecurity
 public class SecurityConfig {
-
+    //    @Bean
+//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+//        http
+//                .sessionManagement(session -> session
+//                        .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
+//                )
+//                .authorizeHttpRequests(authorize -> authorize
+//                        .requestMatchers("/public/**").permitAll()
+//                        .anyRequest().authenticated()
+//                )
+//                .oauth2Login(oauth2 -> oauth2
+//                        .loginPage("/oauth2/authorization/keycloak")
+//                        .defaultSuccessUrl("/home", true)
+//                        .failureUrl("/login?error=true")
+//                )
+//                .logout(logout -> logout
+//                        .logoutSuccessUrl("/login?logout=true")
+//                        .permitAll()
+//                )
+//                .csrf(AbstractHttpConfigurer::disable);
+//
+//        return http.build();
+//    }
     @Bean
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
-        return http
-                .securityMatcher(ServerWebExchangeMatchers.anyExchange()) // 全局匹配请求
-                .authorizeExchange(exchanges -> exchanges
-                        .pathMatchers("/public/**").permitAll() // 允许匿名访问
-                        .pathMatchers("/admin/**").hasRole("ADMIN") // 仅管理员访问
-                        .pathMatchers("/users/**").hasRole("USER") // 仅普通用户访问
-                        .anyExchange().authenticated() // 其他请求需认证
+        http
+                .authorizeExchange(authorize -> authorize
+                        .pathMatchers("/public/**").permitAll()
+                        .anyExchange().authenticated()
                 )
-                .csrf(ServerHttpSecurity.CsrfSpec::disable) // 禁用 CSRF
-                .build();
+                .oauth2Login(Customizer.withDefaults())
+                .csrf(ServerHttpSecurity.CsrfSpec::disable);
+
+        return http.build();
     }
-
-
 }

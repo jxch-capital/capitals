@@ -1,0 +1,6 @@
+spring:
+  cloud:
+    config:
+      uri: http://jiangxicheng.online:17002
+      name: capitals-cloud-gateway,discovery-zookeeper,spring-boot-admin-client,rabbitmq,oauth2-keycloak
+
