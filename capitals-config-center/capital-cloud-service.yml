@@ -9,23 +9,20 @@ spring:
       connect-string: jiangxicheng.online:2181
       discovery:
         root: /services/${spring.profiles.active}/
-    compatibility-verifier:
-      enabled: false
   rabbitmq:
     host: jiangxicheng.online
     port: 5672
     username: rabbitmq
     password: rabbitmq
-  sleuth:
-    enabled: true
-    sampler:
-      rate: 100
-      probability: 1.0
-  zipkin:
-    base-url: http://jiangxicheng.online:9411
 
 management:
   endpoints:
     web:
       exposure:
         include: "*"
+  zipkin:
+    tracing:
+      endpoint: http://jiangxicheng.online:9411/api/v2/spans
+  tracing:
+    sampling:
+      probability: 1.0
