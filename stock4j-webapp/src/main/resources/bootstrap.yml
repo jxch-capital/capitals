@@ -2,4 +2,6 @@ spring:
   cloud:
     config:
       uri: http://jiangxicheng.online:17002
-      name: capital-cloud-service
+      name: capital-cloud-service,datasource,capitals-stock4j
+
+

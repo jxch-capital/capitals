@@ -8,6 +8,7 @@
   - [x] 注册中心 + 配置中心 + 在线服务状态
   - [x] 网关 + 授权中心 + 反向代理
   - Zipkin + ELK （链路追踪 + 日志分析）
+    - 使用 MQ
   - Spring Cloud Circuit Breaker + Resilience4j  （熔断限流）
   - Jenkins 发布
   - Docker Swarm 可视化

@@ -1,29 +1,7 @@
-server:
-  port: 8080
-
 spring:
-  application:
-    name: Capitals-Stock4j
   profiles:
     active: dev
-  datasource:
-    url: jdbc:postgresql://jiangxicheng.online:5432/capitals
-    username: capitals
-    password: capitals
-    driver-class-name: org.postgresql.Driver
-  jpa:
-    show-sql: true
-    hibernate:
-      ddl-auto: update
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
-    properties:
-      hibernate:
-        format_sql: true
 
-management:
-  zipkin:
-    tracing:
-      endpoint: http://jiangxicheng.online:9411/api/v2/spans
-  tracing:
-    sampling:
-      probability: 1.0
+
+
+

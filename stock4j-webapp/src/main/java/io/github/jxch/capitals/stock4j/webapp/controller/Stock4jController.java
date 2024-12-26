@@ -8,7 +8,6 @@ import io.github.jxch.capitals.stock4j.api3.lb.StockLBApi;
 import io.github.jxch.capitals.stock4j.webapp.api.Stock4jApi;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
@@ -25,16 +24,6 @@ public class Stock4jController implements Stock4jApi {
     @Override
     public StockBatchRes query(StockBatchParam param) {
         return stockLBApi.query(param);
-    }
-
-    @RequestMapping("test")
-    public static String test() {
-        return "test";
-    }
-
-    @RequestMapping("hello")
-    public String hello() {
-        return "Hello World!";
     }
 
 }
