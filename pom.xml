@@ -51,6 +51,9 @@
         <hutool.version>5.8.31</hutool.version>
         <mapstruct.version>1.6.0</mapstruct.version>
         <sleuth.version>3.1.11</sleuth.version>
+        <micrometer.trace.version>1.4.1</micrometer.trace.version>
+        <micrometer.core.version>1.14.2</micrometer.core.version>
+        <zipkin.reporter.version>3.4.3</zipkin.reporter.version>
         <jfreechart.version>1.5.5</jfreechart.version>
         <ta4j.version>0.17</ta4j.version>
         <jsoup.version>1.18.1</jsoup.version>
@@ -88,6 +91,26 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-sleuth</artifactId>
                 <version>${sleuth.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-sleuth-zipkin</artifactId>
+                <version>${sleuth.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.micrometer</groupId>
+                <artifactId>micrometer-tracing-bridge-brave</artifactId>
+                <version>${micrometer.trace.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.micrometer</groupId>
+                <artifactId>micrometer-core</artifactId>
+                <version>${micrometer.core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.zipkin.reporter2</groupId>
+                <artifactId>zipkin-reporter-brave</artifactId>
+                <version>${zipkin.reporter.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.vaadin</groupId>

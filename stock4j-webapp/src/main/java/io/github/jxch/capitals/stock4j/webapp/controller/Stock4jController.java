@@ -8,7 +8,6 @@ import io.github.jxch.capitals.stock4j.api3.lb.StockLBApi;
 import io.github.jxch.capitals.stock4j.webapp.api.Stock4jApi;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,16 +33,7 @@ public class Stock4jController implements Stock4jApi {
     }
 
     @RequestMapping("hello")
-    public String hello(Authentication authentication) {
-//        JwtDecoder jwtDecoder = SpringUtil.getBean(JwtDecoder.class);
-//        if (authorization != null && authorization.startsWith("Bearer ")) {
-//            String token = authorization.substring(7); // 去掉 "Bearer " 前缀
-//
-//            Map<String, Object> claims = jwtDecoder.decode(token).getClaims();
-//            log.info(JSON.toJSONString(claims));
-//
-//            return "Token: " + token;
-//        }
+    public String hello() {
         return "Hello World!";
     }
 

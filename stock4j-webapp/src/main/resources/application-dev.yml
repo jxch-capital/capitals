@@ -1,3 +1,6 @@
 stock4j:
   proxy:
     enable: true
+server:
+  port: 38987
+

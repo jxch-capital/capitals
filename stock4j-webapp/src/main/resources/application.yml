@@ -19,42 +19,11 @@ spring:
     properties:
       hibernate:
         format_sql: true
-  boot:
-    admin:
-      client:
-        url: http://jiangxicheng.online:17001
-        enabled: true
-  cloud:
-    zookeeper:
-      connect-string: jiangxicheng.online:2181
-      discovery:
-        root: /services/${spring.profiles.active}/
-  security:
-    oauth2:
-      client:
-        registration:
-          keycloak:
-            client-id: capitals
-            client-secret: ObgtuH7bWX4fdI7hY5QI6BRqX7aMOVkw
-            scope: openid
-            authorization-grant-type: authorization_code
-#            redirect-uri: "http://localhost:8080/home"
-            client-authentication-method: client_secret_post
-        provider:
-          keycloak:
-            issuer-uri: http://jiangxicheng.online:8081/realms/Capitals
-      resourceserver:
-        jwt:
-          jwk-set-uri: http://jiangxicheng.online:8081/realms/Capitals/protocol/openid-connect/certs
 
 management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-
-
-logging:
-  level:
-    org.springframework.security: debug
-    org.springframework.web: debug
+  zipkin:
+    tracing:
+      endpoint: http://jiangxicheng.online:9411/api/v2/spans
+  tracing:
+    sampling:
+      probability: 1.0
