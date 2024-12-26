@@ -14,7 +14,6 @@
     <modules>
         <module>crawler-common</module>
         <module>capitals-cloud-common</module>
-        <module>cloud-devtools-starter</module>
         <module>index3-starter</module>
         <module>indicator-starter</module>
         <module>stock4j-api3-starter</module>
@@ -51,6 +50,7 @@
         <hutool.version>5.8.31</hutool.version>
         <mapstruct.version>1.6.0</mapstruct.version>
         <sleuth.version>3.1.11</sleuth.version>
+        <logstash.logback.version>8.0</logstash.logback.version>
         <micrometer.trace.version>1.4.1</micrometer.trace.version>
         <micrometer.core.version>1.14.2</micrometer.core.version>
         <zipkin.reporter.version>3.4.3</zipkin.reporter.version>
@@ -88,14 +88,9 @@
                 <scope>import</scope>
             </dependency>
             <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-starter-sleuth</artifactId>
-                <version>${sleuth.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-sleuth-zipkin</artifactId>
-                <version>${sleuth.version}</version>
+                <groupId>net.logstash.logback</groupId>
+                <artifactId>logstash-logback-encoder</artifactId>
+                <version>${logstash.logback.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.micrometer</groupId>
@@ -183,7 +178,6 @@
                 <artifactId>spring-boot-admin-starter-client</artifactId>
                 <version>${spring-boot-admin.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-deploy-plugin</artifactId>
@@ -191,7 +185,6 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
 
     <build>
         <plugins>
