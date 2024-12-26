@@ -26,3 +26,6 @@ management:
   tracing:
     sampling:
       probability: 1.0
+
+logging:
+  config: https://raw.githubusercontent.com/jxch-capital/capitals/refs/heads/main/capitals-config-center/logback-spring.xml
