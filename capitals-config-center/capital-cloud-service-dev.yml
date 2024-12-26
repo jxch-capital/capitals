@@ -1,0 +1,2 @@
+logging:
+  config: capitals-config-center\logback-spring.xml
