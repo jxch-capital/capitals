@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://jiangxicheng.online:5432/capitals
+    username: capitals
+    password: capitals
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate:
+        format_sql: true
