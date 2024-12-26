@@ -1,0 +1,11 @@
+spring:
+  sleuth:
+    enabled: true
+    sampler:
+      rate: 100
+      probability: 1.0
+  zipkin:
+    base-url: http://jiangxicheng.online:9411
+  cloud:
+    compatibility-verifier:
+      enabled: false
