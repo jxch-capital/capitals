@@ -3,4 +3,16 @@ spring:
     name: Capitals-Cloud-Gateway
   security:
     permits: /public/**,/inner/**,/actuator/**
+  cloud:
+    sentinel:
+      datasource:
+        zookeeper:
+          zk:
+            server-addr: jiangxicheng.online:2181
+            group-id: capitals
+            path: /sentinel
+            data-id: gateway
+            rule-type: flow
+      transport:
+        dashboard: jiangxicheng.online:8088
 
