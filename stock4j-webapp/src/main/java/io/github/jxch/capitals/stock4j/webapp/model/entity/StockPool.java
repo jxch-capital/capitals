@@ -31,7 +31,7 @@ public class StockPool {
     private String username;
 
     @Lob
-    @Comment("股票代码，逗号区别")
+    @Comment("股票代码，逗号区分")
     private String codes;
 
     @Column(nullable = false)
