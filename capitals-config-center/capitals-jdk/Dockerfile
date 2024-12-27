@@ -1,0 +1,9 @@
+FROM openjdk:21-jdk-slim
+
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y --no-install-recommends tzdata fontconfig && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' > /etc/timezone && apt-get install -y --no-install-recommends fonts-dejavu && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+ENV PROFILES_ACTIVE=prod
+EXPOSE 8080
+
