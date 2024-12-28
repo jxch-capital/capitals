@@ -2,7 +2,7 @@ spring:
   application:
     name: Capitals-Cloud-Gateway
   security:
-    permits: /public/**,/inner/**,/actuator/**
+    permits: /public/**,/inner/**,/actuator/**,/oauth2/authorization/**
   cloud:
     sentinel:
       datasource:
