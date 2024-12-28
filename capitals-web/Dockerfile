@@ -1,7 +1,9 @@
 FROM nginx:alpine
 
-RUN rm -rf /usr/share/nginx/html/*
-COPY ./dist /usr/share/nginx/html
+WORKDIR /capitals
+
+COPY ./dist /capitals
+COPY ./default.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
 

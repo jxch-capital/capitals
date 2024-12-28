@@ -9,8 +9,12 @@ function renderIcon(icon: Component) {
     return () => h(NIcon, null, {default: () => h(icon)})
 }
 
-const pathRoot = '/capitals';
 const routes = [
+    {
+        path: '/',
+        name: '',
+        component: Home,
+    },
     {
         path: '/home',
         name: 'home',
@@ -27,12 +31,7 @@ const routes = [
         icon: renderIcon(BackupTableFilled),
         component: Home,
     }
-].map(item => {
-    return {
-        ...item,
-        path: pathRoot + item.path
-    };
-});
+];
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
