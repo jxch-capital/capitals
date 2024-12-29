@@ -11,13 +11,21 @@ import java.nio.charset.StandardCharsets;
 @Data
 @Accessors(chain = true)
 public class UserCookie {
-    private String email;
-    private Boolean emailVerified;
-    private String preferredUsername;
     private String name;
+    private String preferredUsername;
     private String givenName;
     private String familyName;
+    private String email;
+    private Boolean emailVerified;
     private String nonce;
+
+    public String getUserid() {
+        return name;
+    }
+
+    public String getUsername() {
+        return preferredUsername;
+    }
 
     public static UserCookie parseJson(String json) {
         return JSON.parseObject(json, UserCookie.class);
