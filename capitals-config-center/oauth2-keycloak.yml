@@ -9,7 +9,6 @@ spring:
             scope: openid
             authorization-grant-type: authorization_code
             client-authentication-method: client_secret_post
-            redirect-uri: /capitals/
         provider:
           keycloak:
             issuer-uri: http://jiangxicheng.online:8081/realms/Capitals
