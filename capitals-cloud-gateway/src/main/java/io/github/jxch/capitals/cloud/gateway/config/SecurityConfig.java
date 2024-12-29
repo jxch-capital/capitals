@@ -6,13 +6,17 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseCookie;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.web.server.SecurityWebFilterChain;
 import org.springframework.security.web.server.authentication.ServerAuthenticationSuccessHandler;
+import org.springframework.web.server.ServerWebExchange;
+import org.springframework.web.util.UriComponentsBuilder;
 import reactor.core.publisher.Mono;
 
+import java.net.URI;
 import java.time.Duration;
 import java.util.List;
 
@@ -27,6 +31,8 @@ public class SecurityConfig {
     private Integer cookieMaxAge;
     @Value("${gateway.cookie.path:/}")
     private String cookiePath;
+    @Value("${gateway.login.redirect-url:/capitals/}")
+    private String loginRedirectUrl;
 
     @Bean
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
@@ -47,7 +53,12 @@ public class SecurityConfig {
             UserCookie userCookie = UserCookie.parseObject(authentication.getPrincipal());
             webFilterExchange.getExchange().getResponse().addCookie(ResponseCookie.from(UserCookie.class.getSimpleName(), userCookie.toUrlJson())
                     .httpOnly(true).secure(true).path(cookiePath).maxAge(Duration.ofHours(cookieMaxAge)).build());
-            return Mono.empty();
+            return Mono.fromRunnable(() -> {
+                ServerWebExchange exchange = webFilterExchange.getExchange();
+                exchange.getResponse().setStatusCode(HttpStatus.FOUND);  // 302 重定向
+                String redirectUrl = UriComponentsBuilder.fromPath(loginRedirectUrl).build().toUriString();
+                exchange.getResponse().getHeaders().setLocation(URI.create(redirectUrl));
+            });
         };
     }
 
