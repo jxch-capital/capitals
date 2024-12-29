@@ -9,6 +9,7 @@ spring:
         zookeeper:
           zk:
             server-addr: jiangxicheng.online:2181
+            path: /sentinel
             rule-type: flow
       transport:
         dashboard: jiangxicheng.online:8088
