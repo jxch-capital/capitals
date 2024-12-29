@@ -7,3 +7,4 @@ RUN apt-get update && apt-get install -y --no-install-recommends tzdata fontconf
 ENV PROFILES_ACTIVE=prod
 EXPOSE 8080
 
+ENTRYPOINT ["sh", "-c", "java -Dspring.profiles.active=${PROFILES_ACTIVE} -Dserver.port=8080 -jar app.jar"]

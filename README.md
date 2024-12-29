@@ -12,6 +12,8 @@
   - Seata 集成
   - Jenkins 发布
   - Docker Swarm 可视化
+  - gateway oath2 身份认证路由跳转加前缀：/api/capitals/
+  - gateway cookie 签名验证
 
 - v1.0.0.100
   - [x] index3-starter
