@@ -16,19 +16,20 @@ import org.hibernate.annotations.Comment;
 @Entity
 @Comment("股票池")
 @Table(name = "stock_pool", indexes = {
-        @Index(name = "stock_pool_name", columnList = "name")
+        @Index(name = "stock_pool_index_userid_name", columnList = "userid,name")
 })
 public class StockPool {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, length = 50)
+    @Comment("用户ID")
+    private String userid;
+
     @Column(nullable = false)
     @Comment("股票池名称")
     private String name;
-
-    @Column(nullable = false, length = 50)
-    private String username;
 
     @Lob
     @Comment("股票代码，逗号区分")
