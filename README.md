@@ -8,12 +8,10 @@
   - [x] 注册中心 + 配置中心 + 在线服务状态
   - [x] 网关 + 授权中心 + 反向代理
   - [x] Zipkin + ELK （链路追踪 + 日志分析）
-  - 熔断限流
+  - gateway 流控规则持久化
   - Seata 集成
   - Jenkins 发布
   - Docker Swarm 可视化
-  - gateway oath2 身份认证路由跳转加前缀：/api/capitals/
-  - gateway cookie 签名验证
 
 - v1.0.0.100
   - [x] index3-starter
