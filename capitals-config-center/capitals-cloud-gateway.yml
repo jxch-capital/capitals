@@ -5,12 +5,15 @@ spring:
     permits: /public/**,/inner/**,/actuator/**
   cloud:
     sentinel:
-      datasource:
-        zookeeper:
-          zk:
-            server-addr: jiangxicheng.online:2181
-            path: /sentinel
-            rule-type: flow
+#      datasource:
+#        zookeeper:
+#          zk:
+#            server-addr: jiangxicheng.online:2181
+#            group-id: capitals
+#            path: sentinel
+#            data-id: gateway
+#            rule-type: flow
+#            data-type: json
       transport:
         dashboard: jiangxicheng.online:8088
 
