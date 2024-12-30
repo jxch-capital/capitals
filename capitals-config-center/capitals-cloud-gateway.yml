@@ -19,6 +19,6 @@ spring:
     gateway:
       routes:
         - id: config-center-route
-          uri: lb://CAPITALS-CLOUD-CONFIG
+          uri: lb://Capitals-Cloud-Config
           predicates:
             - Path=/config-center/**
