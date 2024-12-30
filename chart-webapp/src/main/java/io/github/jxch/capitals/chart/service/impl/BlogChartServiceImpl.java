@@ -1,6 +1,7 @@
 package io.github.jxch.capitals.chart.service.impl;
 
 import io.github.jxch.capitals.chart.service.BlogChartService;
+import io.github.jxch.capitals.chart.utils.ImageUtils;
 import io.github.jxch.capitals.news.brooks.api.BrooksBlogApi;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
@@ -20,8 +21,8 @@ public class BlogChartServiceImpl implements BlogChartService {
     @SneakyThrows
     public BufferedImage brooksFirstArticleChart() {
         URL url = brooksBlogApi.newArticleFirstKChartUrl();
-        return Objects.nonNull(url) ? ImageIO.read(url)
-                : new BufferedImage(0, 0, BufferedImage.TYPE_INT_RGB);
+        return ImageUtils.resize(Objects.nonNull(url) ? ImageIO.read(url)
+                : new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB), 680, 383);
     }
 
 }

@@ -1,0 +1,6 @@
+spring:
+  cloud:
+    config:
+      uri: https://jiangxicheng.online/api/capitals/inner/config-center/
+      name: capitals-chart-webapp,capital-cloud-service
+
