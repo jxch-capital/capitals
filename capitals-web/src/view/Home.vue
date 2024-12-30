@@ -1,9 +1,19 @@
 <script setup lang="ts">
+import api from '../api'
+
+const userCookie = () => {
+  const res =  api.pub.userCookie()
+  console.log(res)
+}
 
 </script>
 
 <template>
-  <n-h1>Hello Capitals</n-h1>
+  <n-card>
+    <n-button @click="userCookie">登录</n-button>
+<!--    https://jiangxicheng.online/api/capitals/public/userCookie -->
+
+  </n-card>
 </template>
 
 <style scoped>

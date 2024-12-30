@@ -13,6 +13,7 @@
   - Jenkins 发布
   - Docker Swarm 可视化
   - gateway oauth2最后的登录链接使用caddy代理修改Location，便于区隔项目api
+  - 跨域保护
 
 - v1.0.0.100
   - [x] index3-starter
