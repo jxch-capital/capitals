@@ -34,4 +34,4 @@ spring:
 logging:
   level:
     root: info
-    com.alibaba.cloud.sentinel.endpoint.SentinelHealthIndicator: debug
+    com.alibaba.cloud.sentinel.endpoint.SentinelHealthIndicator: warn
