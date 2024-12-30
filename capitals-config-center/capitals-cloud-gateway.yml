@@ -30,9 +30,4 @@ spring:
             - Path=/public/chart/**
           filters:
             - StripPrefix=2
-        - id: test-route
-          uri: lb://Capitals-Chart
-          predicates:
-            - Path=/public/chart/**
-          filters:
-            - StripPrefix=2
+
