@@ -16,4 +16,9 @@ spring:
 #            data-type: json
       transport:
         dashboard: jiangxicheng.online:8088
-
+    gateway:
+      routes:
+        - id: config-center-route
+          uri: lb://CAPITALS-CLOUD-CONFIG
+          predicates:
+            - Path=/config-center/**
