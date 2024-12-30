@@ -41,8 +41,10 @@ public class SecurityConfig {
                     permits.forEach(permit -> authorize.pathMatchers(permit).permitAll());
                     authorize.anyExchange().authenticated();
                 })
-                .oauth2Login(oauth2LoginSpec -> oauth2LoginSpec.authenticationSuccessHandler(authenticationSuccessHandler()))
-                .csrf(ServerHttpSecurity.CsrfSpec::disable);
+                .oauth2Login(oauth2LoginSpec -> oauth2LoginSpec
+                        .authenticationSuccessHandler(authenticationSuccessHandler()))
+                .csrf(ServerHttpSecurity.CsrfSpec::disable)
+                .cors(ServerHttpSecurity.CorsSpec::disable);
 
         return http.build();
     }
