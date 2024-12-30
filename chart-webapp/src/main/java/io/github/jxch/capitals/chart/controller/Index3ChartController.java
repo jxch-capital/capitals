@@ -14,7 +14,7 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/chart/index3")
+@RequestMapping("/index3")
 public class Index3ChartController {
     private final Index3ChartService index3ChartService;
 

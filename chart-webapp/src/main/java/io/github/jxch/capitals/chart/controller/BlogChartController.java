@@ -11,7 +11,7 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/chart/blog")
+@RequestMapping("/blog")
 public class BlogChartController {
     private final BlogChartService blogChartService;
 

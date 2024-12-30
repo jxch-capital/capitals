@@ -14,7 +14,7 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/chart/kline")
+@RequestMapping("/kline")
 public class KlineChartController {
     private final KlineChartService klineChartService;
 
