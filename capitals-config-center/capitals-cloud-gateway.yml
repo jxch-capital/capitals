@@ -2,7 +2,7 @@ spring:
   application:
     name: Capitals-Cloud-Gateway
   security:
-    permits: /public/**,/inner/**,/actuator/**,/config-center/**
+    permits: /public/**,/inner/**,/actuator/**
   cloud:
     sentinel:
 #      datasource:
@@ -18,9 +18,15 @@ spring:
         dashboard: jiangxicheng.online:8088
     gateway:
       routes:
-        - id: config-center-route
+        - id: capitals-config-center-route
           uri: lb://Capitals-Cloud-Config
           predicates:
-            - Path=/config-center/**
+            - Path=/inner/config-center/**
           filters:
-            - StripPrefix=1
+            - StripPrefix=2
+        - id: capitals-chart-route
+          uri: lb://Capitals-Chart
+          predicates:
+            - Path=/public/chart/**
+          filters:
+            - StripPrefix=2
