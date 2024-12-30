@@ -21,9 +21,11 @@ public class GatewayUserController {
     private final SecurityConfig securityConfig;
 
     @RequestMapping("/login")
-    public Mono<Void> login(ServerHttpResponse response) {
+    public Mono<Void> login(Authentication authentication, ServerHttpResponse response) {
+        String redirectUrl = Objects.isNull(authentication) || !authentication.isAuthenticated() ? "/login" : securityConfig.getLoginRedirectUrl();
+
         response.setStatusCode(HttpStatus.FOUND);
-        response.getHeaders().setLocation(URI.create(securityConfig.getLoginRedirectUrl()));
+        response.getHeaders().setLocation(URI.create(redirectUrl));
         return Mono.empty();
     }
 
