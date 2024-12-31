@@ -14,12 +14,14 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.server.ServerWebExchange;
 import org.springframework.web.util.UriComponentsBuilder;
+import org.springframework.web.util.UriUtils;
 import reactor.core.publisher.Mono;
 
 import java.net.URI;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.time.Duration;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Objects;
 
 @Component
 public class GatewayServerOAuth2Processor implements ServerOAuth2AuthorizationRequestResolver, ServerAuthenticationSuccessHandler {
@@ -44,10 +46,12 @@ public class GatewayServerOAuth2Processor implements ServerOAuth2AuthorizationRe
     private OAuth2AuthorizationRequest resolve(OAuth2AuthorizationRequest authorizationRequest, ServerWebExchange exchange) {
         String redirectTo = exchange.getRequest().getQueryParams().getFirst(securityConfig.getRedirectUrlParam());
         if (StringUtils.hasText(redirectTo)) {
-            Map<String, Object> additionalParameters = new HashMap<>(authorizationRequest.getAdditionalParameters());
-            additionalParameters.put(securityConfig.getRedirectUrlParam(), redirectTo);
+            String encodedRedirectTo = UriUtils.encode(redirectTo, StandardCharsets.UTF_8);
+            String originalState = authorizationRequest.getState();
+            String newState = originalState + "&" + securityConfig.getRedirectUrlParam() + "=" + encodedRedirectTo;
+
             return OAuth2AuthorizationRequest.from(authorizationRequest)
-                    .additionalParameters(additionalParameters)
+                    .state(newState)
                     .build();
         }
         return authorizationRequest;
@@ -61,8 +65,9 @@ public class GatewayServerOAuth2Processor implements ServerOAuth2AuthorizationRe
         return Mono.fromRunnable(() -> {
             ServerWebExchange exchange = webFilterExchange.getExchange();
 
-            String state = exchange.getRequest().getQueryParams().getFirst(securityConfig.getRedirectUrlParam());
-            String redirectUrl = (state != null && isValidRedirectUri(state)) ? state :
+            String state = exchange.getRequest().getQueryParams().getFirst("state");
+            state = URLDecoder.decode(state, StandardCharsets.UTF_8);
+            String redirectUrl = hasValidRedirectUri(state) ? getRedirectUri(state) :
                     UriComponentsBuilder.fromPath(securityConfig.getDefaultLoginRedirectUrl()).build().toUriString();
 
             exchange.getResponse().setStatusCode(HttpStatus.FOUND);  // 302 重定向
@@ -70,14 +75,23 @@ public class GatewayServerOAuth2Processor implements ServerOAuth2AuthorizationRe
         });
     }
 
-    private boolean isValidRedirectUri(String uri) {
-        try {
-            URI parsedUri = new URI(uri);
-            String host = parsedUri.getHost();
-            return host != null && securityConfig.getAllowRedirectHost().stream().anyMatch(host::endsWith);
-        } catch (Exception e) {
-            return false;
+    // todo 不够健壮（只支持一个参数）
+    private boolean hasValidRedirectUri(String state) {
+        if (Objects.nonNull(state) && StringUtils.hasText(state) && state.contains("&") && state.contains(securityConfig.getRedirectUrlParam() + "=")) {
+            try {
+                URI parsedUri = new URI(getRedirectUri(state));
+                String host = parsedUri.getHost();
+                return host != null && securityConfig.getAllowRedirectHost().stream().anyMatch(host::endsWith);
+            } catch (Exception e) {
+                return false;
+            }
         }
+
+        return false;
+    }
+
+    private String getRedirectUri(String state) {
+        return state.split("&")[1].split("=")[1];
     }
 
 }
