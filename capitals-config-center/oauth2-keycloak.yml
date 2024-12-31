@@ -12,6 +12,11 @@ spring:
         provider:
           keycloak:
             issuer-uri: http://jiangxicheng.online:8081/realms/Capitals
+            jwk-set-uri: http://jiangxicheng.online:8081/realms/Capitals/protocol/openid-connect/certs
+            authorization-uri: http://jiangxicheng.online:8081/realms/Capitals/protocol/openid-connect/auth
+            token-uri: http://jiangxicheng.online:8081/realms/Capitals/protocol/openid-connect/token
+            user-info-uri: http://jiangxicheng.online:8081/realms/Capitals/protocol/openid-connect/userinfo
       resourceserver:
         jwt:
+          issuer-uri: http://jiangxicheng.online:8081/realms/Capitals
           jwk-set-uri: http://jiangxicheng.online:8081/realms/Capitals/protocol/openid-connect/certs
