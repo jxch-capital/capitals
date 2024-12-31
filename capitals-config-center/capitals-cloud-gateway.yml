@@ -17,18 +17,18 @@ spring:
       transport:
         dashboard: jiangxicheng.online:8088
     gateway:
-      globalcors:
-        corsConfigurations:
-          '[/**]':
-            allowedOrigins:
-              - "*"
-            allowedMethods:
-              - "*"
-            allowedHeaders:
-              - "*"
-            exposed-headers:
-              - "Set-Cookie"
-            allowCredentials: true
+#      globalcors:
+#        corsConfigurations:
+#          '[/**]':
+#            allowedOrigins:
+#              - "*"
+#            allowedMethods:
+#              - "*"
+#            allowedHeaders:
+#              - "*"
+#            exposed-headers:
+#              - "Set-Cookie"
+#            allowCredentials: true
       routes:
         - id: capitals-config-center-route
           uri: lb://Capitals-Cloud-Config
@@ -42,17 +42,6 @@ spring:
             - Path=/public/chart/**
           filters:
             - StripPrefix=2
-
-server:
-  servlet:
-    session:
-      cookie:
-        same-site: none
-
-gateway:
-  login:
-    redirect-url-param: redirect-to
-    allow-redirect-host: localhost,127.0.0.1,jiangxicheng.online
 
 logging:
   level:
