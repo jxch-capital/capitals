@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpHeaders;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.web.server.SecurityWebFilterChain;
@@ -56,6 +57,7 @@ public class SecurityConfig {
         configuration.addAllowedHeader(CorsConfiguration.ALL);
         configuration.addAllowedMethod(CorsConfiguration.ALL);
         configuration.setAllowCredentials(true);
+        configuration.setExposedHeaders(Collections.singletonList(HttpHeaders.SET_COOKIE));
 
         org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
