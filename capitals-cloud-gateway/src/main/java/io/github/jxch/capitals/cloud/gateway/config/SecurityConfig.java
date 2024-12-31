@@ -6,6 +6,7 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpHeaders;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.web.server.SecurityWebFilterChain;
@@ -36,7 +37,7 @@ public class SecurityConfig {
     private List<String> allowRedirectHost;
 
     @Bean
-    public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http, GatewayServerOAuth2Processor requestResolver) {
+    public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
         http
                 .cors(corsSpec -> corsSpec.configurationSource(configurationSource()))
                 .csrf(csrfSpec -> csrfSpec.requireCsrfProtectionMatcher((exchange) -> ServerWebExchangeMatcher.MatchResult.notMatch()))
@@ -44,8 +45,7 @@ public class SecurityConfig {
                     permits.forEach(permit -> authorize.pathMatchers(permit).permitAll());
                     authorize.anyExchange().authenticated();
                 })
-                .oauth2Login(oauth2LoginSpec -> oauth2LoginSpec.authorizationRequestResolver(requestResolver)
-                        .authenticationSuccessHandler(requestResolver));
+                .oauth2Login(Customizer.withDefaults());
 
         return http.build();
     }
