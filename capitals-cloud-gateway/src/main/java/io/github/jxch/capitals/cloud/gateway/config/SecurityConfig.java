@@ -25,16 +25,6 @@ import java.util.List;
 public class SecurityConfig {
     @Value("${spring.security.permits:}")
     private List<String> permits;
-    @Value("${gateway.cookie.max-age:1}")
-    private Integer cookieMaxAge;
-    @Value("${gateway.cookie.path:/}")
-    private String cookiePath;
-    @Value("${gateway.login.default-redirect-url:/capitals/}")
-    private String defaultLoginRedirectUrl;
-    @Value("${gateway.login.redirect-url-param:redirect-to}")
-    private String redirectUrlParam;
-    @Value("${gateway.login.allow-redirect-host:localhost,127.0.0.1}")
-    private List<String> allowRedirectHost;
 
     @Bean
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
@@ -45,7 +35,7 @@ public class SecurityConfig {
                     permits.forEach(permit -> authorize.pathMatchers(permit).permitAll());
                     authorize.anyExchange().authenticated();
                 })
-                .oauth2Login(Customizer.withDefaults());
+                .oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()));
 
         return http.build();
     }
@@ -57,7 +47,7 @@ public class SecurityConfig {
         configuration.addAllowedHeader(CorsConfiguration.ALL);
         configuration.addAllowedMethod(CorsConfiguration.ALL);
         configuration.setAllowCredentials(true);
-        configuration.setExposedHeaders(Collections.singletonList(HttpHeaders.SET_COOKIE));
+        configuration.setExposedHeaders(List.of(HttpHeaders.AUTHORIZATION, HttpHeaders.SET_COOKIE));
 
         org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
