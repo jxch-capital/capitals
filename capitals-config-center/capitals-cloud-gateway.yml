@@ -51,7 +51,7 @@ server:
 
 gateway:
   login:
-    redirect-url-param: state
+    redirect-url-param: redirect-to
     allow-redirect-host: localhost,127.0.0.1,jiangxicheng.online
 
 logging:
