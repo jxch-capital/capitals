@@ -32,8 +32,12 @@ public class SecurityConfig {
     private Integer cookieMaxAge;
     @Value("${gateway.cookie.path:/}")
     private String cookiePath;
-    @Value("${gateway.login.redirect-url:/capitals/}")
-    private String loginRedirectUrl;
+    @Value("${gateway.login.default-redirect-url:/capitals/}")
+    private String defaultLoginRedirectUrl;
+    @Value("${gateway.login.redirect-url-param:state}")
+    private String redirectUrlParam;
+    @Value("${gateway.login.allow-redirect-host:localhost,127.0.0.1}")
+    private List<String> allowRedirectHost;
 
     @Bean
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
@@ -57,11 +61,25 @@ public class SecurityConfig {
                     .httpOnly(true).secure(true).path(cookiePath).maxAge(Duration.ofHours(cookieMaxAge)).build());
             return Mono.fromRunnable(() -> {
                 ServerWebExchange exchange = webFilterExchange.getExchange();
+
+                String state = exchange.getRequest().getQueryParams().getFirst(redirectUrlParam);
+                String redirectUrl = (state != null && isValidRedirectUri(state)) ? state :
+                        UriComponentsBuilder.fromPath(defaultLoginRedirectUrl).build().toUriString();
+
                 exchange.getResponse().setStatusCode(HttpStatus.FOUND);  // 302 重定向
-                String redirectUrl = UriComponentsBuilder.fromPath(loginRedirectUrl).build().toUriString();
                 exchange.getResponse().getHeaders().setLocation(URI.create(redirectUrl));
             });
         };
+    }
+
+    private boolean isValidRedirectUri(String uri) {
+        try {
+            URI parsedUri = new URI(uri);
+            String host = parsedUri.getHost();
+            return host != null && allowRedirectHost.stream().anyMatch(host::endsWith);
+        } catch (Exception e) {
+            return false;
+        }
     }
 
 }

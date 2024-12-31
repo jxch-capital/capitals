@@ -49,6 +49,11 @@ server:
       cookie:
         same-site: none
 
+gateway:
+  login:
+    redirect-url-param: state
+    allow-redirect-host: localhost,127.0.0.1,jiangxicheng.online
+
 logging:
   level:
     root: info
