@@ -66,9 +66,7 @@ public class GatewayServerOAuth2Processor implements ServerOAuth2AuthorizationRe
             ServerWebExchange exchange = webFilterExchange.getExchange();
 
             String state = exchange.getRequest().getQueryParams().getFirst("state");
-            state = URLDecoder.decode(state, StandardCharsets.UTF_8);
-            String redirectUrl = hasValidRedirectUri(state) ? getRedirectUri(state) :
-                    UriComponentsBuilder.fromPath(securityConfig.getDefaultLoginRedirectUrl()).build().toUriString();
+            String redirectUrl = hasValidRedirectUri(state) ? getRedirectUri(state) : getDefaultRedirectUri();
 
             exchange.getResponse().setStatusCode(HttpStatus.FOUND);  // 302 重定向
             exchange.getResponse().getHeaders().setLocation(URI.create(redirectUrl));
@@ -77,8 +75,9 @@ public class GatewayServerOAuth2Processor implements ServerOAuth2AuthorizationRe
 
     // todo 不够健壮（只支持一个参数）
     private boolean hasValidRedirectUri(String state) {
-        if (Objects.nonNull(state) && StringUtils.hasText(state) && state.contains("&") && state.contains(securityConfig.getRedirectUrlParam() + "=")) {
+        if (Objects.nonNull(state) && StringUtils.hasText(state) && state.contains("&") && decode(state).contains(securityConfig.getRedirectUrlParam() + "=")) {
             try {
+                state = decode(state);
                 URI parsedUri = new URI(getRedirectUri(state));
                 String host = parsedUri.getHost();
                 return host != null && securityConfig.getAllowRedirectHost().stream().anyMatch(host::endsWith);
@@ -90,8 +89,21 @@ public class GatewayServerOAuth2Processor implements ServerOAuth2AuthorizationRe
         return false;
     }
 
+    private String decode(String state) {
+        return URLDecoder.decode(state, StandardCharsets.UTF_8);
+    }
+
     private String getRedirectUri(String state) {
-        return state.split("&")[1].split("=")[1];
+        try {
+            state = decode(state);
+            return state.split("&")[1].split("=")[1];
+        } catch (Exception e) {
+            return getDefaultRedirectUri();
+        }
+    }
+
+    private String getDefaultRedirectUri() {
+        return UriComponentsBuilder.fromPath(securityConfig.getDefaultLoginRedirectUrl()).build().toUriString();
     }
 
 }
