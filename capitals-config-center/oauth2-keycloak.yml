@@ -1,21 +1,21 @@
 spring:
   security:
     oauth2:
-      client:
-        registration:
-          keycloak:
-            client-id: capitals
-            client-secret: ObgtuH7bWX4fdI7hY5QI6BRqX7aMOVkw
-            scope: openid
-            authorization-grant-type: authorization_code
-            client-authentication-method: client_secret_post
-        provider:
-          keycloak:
-            issuer-uri: http://jiangxicheng.online:8081/realms/Capitals
-            jwk-set-uri: http://jiangxicheng.online:8081/realms/Capitals/protocol/openid-connect/certs
-            authorization-uri: http://jiangxicheng.online:8081/realms/Capitals/protocol/openid-connect/auth
-            token-uri: http://jiangxicheng.online:8081/realms/Capitals/protocol/openid-connect/token
-            user-info-uri: http://jiangxicheng.online:8081/realms/Capitals/protocol/openid-connect/userinfo
+#      client:
+#        registration:
+#          keycloak:
+#            client-id: capitals
+#            client-secret: ObgtuH7bWX4fdI7hY5QI6BRqX7aMOVkw
+#            scope: openid
+#            authorization-grant-type: authorization_code
+#            client-authentication-method: client_secret_post
+#        provider:
+#          keycloak:
+#            issuer-uri: http://jiangxicheng.online:8081/realms/Capitals
+#            jwk-set-uri: http://jiangxicheng.online:8081/realms/Capitals/protocol/openid-connect/certs
+#            authorization-uri: http://jiangxicheng.online:8081/realms/Capitals/protocol/openid-connect/auth
+#            token-uri: http://jiangxicheng.online:8081/realms/Capitals/protocol/openid-connect/token
+#            user-info-uri: http://jiangxicheng.online:8081/realms/Capitals/protocol/openid-connect/userinfo
       resourceserver:
         jwt:
           issuer-uri: http://jiangxicheng.online:8081/realms/Capitals
