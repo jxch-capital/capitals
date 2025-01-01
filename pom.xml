@@ -61,6 +61,7 @@
         <curator.version>5.7.1</curator.version>
         <spring-boot-admin.version>3.4.0</spring-boot-admin.version>
         <vaadin.version>24.5.6</vaadin.version>
+        <feign.reactor.version>4.2.1</feign.reactor.version>
     </properties>
 
     <dependencyManagement>
@@ -86,6 +87,11 @@
                 <version>2023.0.1.2</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.playtika.reactivefeign</groupId>
+                <artifactId>feign-reactor-spring-configuration</artifactId>
+                <version>${feign.reactor.version}</version>
             </dependency>
             <dependency>
                 <groupId>net.logstash.logback</groupId>

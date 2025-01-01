@@ -9,6 +9,7 @@ import io.github.jxch.capitals.stock4j.webapp.api.Stock4jApi;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Mono;
 
 @Slf4j
 @RestController
@@ -17,13 +18,13 @@ public class Stock4jController implements Stock4jApi {
     private final StockLBApi stockLBApi;
 
     @Override
-    public StockRes query(StockParam param) {
-        return stockLBApi.query(param);
+    public Mono<StockRes> query(StockParam param) {
+        return Mono.just(stockLBApi.query(param));
     }
 
     @Override
-    public StockBatchRes query(StockBatchParam param) {
-        return stockLBApi.query(param);
+    public Mono<StockBatchRes> query(StockBatchParam param) {
+        return Mono.just(stockLBApi.query(param));
     }
 
 }

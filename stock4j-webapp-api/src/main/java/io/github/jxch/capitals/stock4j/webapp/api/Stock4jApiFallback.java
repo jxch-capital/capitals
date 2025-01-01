@@ -6,21 +6,22 @@ import io.github.jxch.capitals.stock4j.api.StockParam;
 import io.github.jxch.capitals.stock4j.api.StockRes;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+import reactor.core.publisher.Mono;
 
 @Slf4j
 @Component
 public class Stock4jApiFallback implements Stock4jApi {
 
     @Override
-    public StockRes query(StockParam param) {
+    public Mono<StockRes> query(StockParam param) {
         log.warn("Stock4jApiFallback: query");
-        return StockRes.builder().build();
+        return Mono.just(StockRes.builder().build());
     }
 
     @Override
-    public StockBatchRes query(StockBatchParam param) {
+    public Mono<StockBatchRes> query(StockBatchParam param) {
         log.warn("Stock4jApiFallback: queryBatch");
-        return StockBatchRes.builder().build();
+        return Mono.just(StockBatchRes.builder().build());
     }
 
 }
