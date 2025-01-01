@@ -1,5 +1,5 @@
 import {createRouter, createWebHistory} from 'vue-router';
-import Home from '../view/Home.vue';
+import Home from '@/views/Home.vue';
 import {BackupTableFilled, HomeOutlined} from "@vicons/material";
 import type {Component} from "vue";
 import {NIcon} from 'naive-ui'
@@ -22,6 +22,11 @@ const routes = [
         whateverKey: 'home',
         icon: renderIcon(HomeOutlined),
         component: Home,
+    },
+    {
+        path: '/logging',
+        name: 'logging',
+        component: () => import('@/views/Logging.vue'),
     },
     {
         path: '/stock-pool',

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {useRouter} from 'vue-router';
 import type {MenuOption} from 'naive-ui'
-import {menu} from '../router'
+import {menu} from '@/router'
 import {ref} from 'vue'
 
 const naiveMenuOptions: MenuOption[] = menu
