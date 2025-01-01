@@ -7,7 +7,6 @@ import io.github.jxch.capitals.stock4j.api.StockRes;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import reactivefeign.spring.config.ReactiveFeignClient;
 import reactor.core.publisher.Mono;
 
@@ -15,11 +14,9 @@ import reactor.core.publisher.Mono;
 @ReactiveFeignClient(name = "Capitals-Stock4j", fallback = Stock4jApiFallback.class)
 public interface Stock4jApi {
 
-    @ResponseBody
     @PostMapping("query")
     Mono<StockRes> query(@RequestBody StockParam param);
 
-    @ResponseBody
     @PostMapping("queryBatch")
     Mono<StockBatchRes> query(@RequestBody StockBatchParam param);
 
