@@ -3,7 +3,7 @@ import {onMounted, ref} from 'vue';
 import auth from '@/auth';
 import {useStore} from '@/store';
 
-const user = ref(useStore.useAuthStore().getCurrentUser())
+const user: any = ref(useStore.useAuthStore().getCurrentUser())
 const isLoggedIn = ref(useStore.useAuthStore().isLoggedIn());
 
 onMounted(async () => {
@@ -23,9 +23,9 @@ onMounted(async () => {
   <n-card v-if="isLoggedIn">
     <n-gradient-text type="success">登录成功</n-gradient-text>
     <n-divider/>
-    <n-p>用户名：{{ user.profile.name }}</n-p>
-    <n-p>邮箱：{{ user.profile.email }}</n-p>
-    <n-p>邮箱是否验证：{{ user.profile.email_verified ? '是' : '否' }}</n-p>
+    <n-p>用户名：{{ user['profile']['name'] }}</n-p>
+    <n-p>邮箱：{{ user['profile']['email'] }}</n-p>
+    <n-p>邮箱是否验证：{{ user['profile']['email_verified'] ? '是' : '否' }}</n-p>
   </n-card>
 </template>
 
