@@ -14,6 +14,18 @@ spring:
     port: 5672
     username: rabbitmq
     password: rabbitmq
+  session:
+    redis:
+      repository-type: indexed
+      namespace: "spring:session"     # 可选，默认就是 spring:session
+      flush-mode: on_save            # 可选
+      save-mode: on_set_attribute    # 可选
+    timeout: 30m                     # session 超时时间
+  data:
+    redis:
+      host: jiangxicheng.online
+      port: 6379
+      database: 0
 
 management:
   endpoints:
