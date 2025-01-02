@@ -32,6 +32,7 @@ spring:
             - Path=/public/chart/**
           filters:
             - StripPrefix=2
+            - PreserveHostHeader=true
       globalcors:
         cors-configurations:
           '[/**]':
