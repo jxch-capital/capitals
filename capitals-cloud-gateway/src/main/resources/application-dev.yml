@@ -1,15 +1,2 @@
-spring:
-  cloud:
-    gateway:
-      default-filters:
-        - TokenRelay
-      routes:
-        - id: capitals-chart-route
-          uri: http://127.0.0.1:8080
-          predicates:
-            - Path=/public/chart/**
-          filters:
-            - StripPrefix=2
-
 server:
   port: 8088

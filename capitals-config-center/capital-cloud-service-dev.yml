@@ -1,2 +1,9 @@
 logging:
   config: capitals-config-center\logback-spring.xml
+
+spring:
+  cloud:
+    zookeeper:
+      discovery:
+        instance-host: 127.0.0.1
+
