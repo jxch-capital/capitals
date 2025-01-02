@@ -33,6 +33,13 @@ spring:
           filters:
             - StripPrefix=2
             - PreserveHostHeader=true
+        - id: capitals-stock4j-doc-route
+          uri: lb://Capitals-Stock4j
+          predicates:
+            - Path=/public/doc/stock4j/**
+          filters:
+            - StripPrefix=3
+            - PreserveHostHeader=true
       globalcors:
         add-to-simple-url-handler-mapping: true
         cors-configurations:
