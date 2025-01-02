@@ -33,7 +33,7 @@ spring:
           filters:
             - StripPrefix=2
       globalcors:
-        corsConfigurations:
+        cors-configurations:
           '[/**]':
             allowed-origin-patterns:
               - "*"
