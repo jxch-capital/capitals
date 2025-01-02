@@ -17,7 +17,7 @@ spring:
   session:
     redis:
       repository-type: indexed
-      namespace: "spring:session-${spring.profiles.active:public}"
+      namespace: "spring:session-${spring.profiles.active}"
       flush-mode: on_save
       save-mode: on_set_attribute
     timeout: 30m
