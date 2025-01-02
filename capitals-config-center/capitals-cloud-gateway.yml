@@ -47,6 +47,13 @@ spring:
               - "Authorization"
             allow-credentials: true
 
+server:
+  servlet:
+    session:
+      cookie:
+        same-site: none
+        secure: true
+
 logging:
   level:
     root: info
