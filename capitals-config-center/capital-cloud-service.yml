@@ -18,8 +18,8 @@ spring:
     redis:
       repository-type: indexed
       namespace: "spring:session-${spring.profiles.active}"
-      flush-mode: on_save
-      save-mode: on_set_attribute
+      flush-mode: immediate
+      save-mode: always
     timeout: 30m
   data:
     redis:
