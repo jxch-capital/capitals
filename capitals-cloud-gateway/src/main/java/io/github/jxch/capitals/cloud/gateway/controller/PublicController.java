@@ -9,7 +9,7 @@ import reactor.core.publisher.Mono;
 @RequestMapping("/public")
 public class PublicController {
 
-    @RequestMapping("session")
+    @RequestMapping("/session")
     public Mono<String> session(WebSession session) {
         session.getAttributes().put("session", session.getId());
         return Mono.just(session.getId());
