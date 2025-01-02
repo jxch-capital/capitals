@@ -17,10 +17,10 @@ spring:
   session:
     redis:
       repository-type: indexed
-      namespace: "spring:session"     # 可选，默认就是 spring:session
-      flush-mode: on_save            # 可选
-      save-mode: on_set_attribute    # 可选
-    timeout: 30m                     # session 超时时间
+      namespace: "spring:session-${spring.profiles.active:public}"
+      flush-mode: on_save
+      save-mode: on_set_attribute
+    timeout: 30m
   data:
     redis:
       host: jiangxicheng.online
