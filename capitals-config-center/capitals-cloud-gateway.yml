@@ -17,18 +17,8 @@ spring:
       transport:
         dashboard: jiangxicheng.online:8088
     gateway:
-#      globalcors:
-#        corsConfigurations:
-#          '[/**]':
-#            allowedOrigins:
-#              - "*"
-#            allowedMethods:
-#              - "*"
-#            allowedHeaders:
-#              - "*"
-#            exposed-headers:
-#              - "Set-Cookie"
-#            allowCredentials: true
+      default-filters:
+        - TokenRelay
       routes:
         - id: capitals-config-center-route
           uri: lb://Capitals-Cloud-Config
@@ -42,8 +32,22 @@ spring:
             - Path=/public/chart/**
           filters:
             - StripPrefix=2
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowed-origin-patterns:
+              - "*"
+            allowed-methods:
+              - "*"
+            allowed-headers:
+              - "*"
+            exposed-headers:
+              - "Set-Cookie"
+              - "Authorization"
+            allow-credentials: true
 
 logging:
   level:
     root: info
     com.alibaba.cloud.sentinel.endpoint.SentinelHealthIndicator: warn
+    io.netty.resolver.dns: INFO
