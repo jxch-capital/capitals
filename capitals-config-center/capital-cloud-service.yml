@@ -9,6 +9,8 @@ spring:
       connect-string: jiangxicheng.online:2181
       discovery:
         root: /services/${spring.profiles.active}/
+        instanceHost: ${HOSTNAME}
+        preferIpAddress: false
   rabbitmq:
     host: jiangxicheng.online
     port: 5672
