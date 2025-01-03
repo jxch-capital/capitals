@@ -19,8 +19,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.playtika.reactivefeign</groupId>
-            <artifactId>feign-reactor-spring-configuration</artifactId>
+            <groupId>io.github.jxch</groupId>
+            <artifactId>capitals-cloud-common-api</artifactId>
         </dependency>
 
         <dependency>

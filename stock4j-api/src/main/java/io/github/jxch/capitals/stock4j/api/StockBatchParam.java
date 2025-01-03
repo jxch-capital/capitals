@@ -1,5 +1,6 @@
 package io.github.jxch.capitals.stock4j.api;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,7 +17,9 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
+@Schema(description = "股票批量查询接口参数")
 public class StockBatchParam {
+    @Schema(description = "股票代码列表", requiredMode = Schema.RequiredMode.REQUIRED)
     private List<String> codes;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss.SSS")
     private Date start;

@@ -25,6 +25,7 @@
         <module>capitals-cloud-admin</module>
         <module>capitals-cloud-config</module>
         <module>capitals-cloud-gateway</module>
+        <module>capitals-cloud-common-api</module>
     </modules>
 
     <parent>
@@ -64,6 +65,7 @@
         <vaadin.version>24.5.6</vaadin.version>
         <feign.reactor.version>4.2.1</feign.reactor.version>
         <knife4j.version>4.5.0</knife4j.version>
+        <swagger.v3.version>2.2.27</swagger.v3.version>
     </properties>
 
     <dependencyManagement>
@@ -89,6 +91,11 @@
                 <version>2023.0.1.2</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.swagger.core.v3</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>${swagger.v3.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.playtika.reactivefeign</groupId>
