@@ -17,6 +17,6 @@ class BreadthScoreApiTest {
     @Test
     void index() {
         var res = breadthScoreApi.breadthScore();
-        log.info("{}", JSON.toJSONString(res.getItemList()));
+        log.info("{}", JSON.toJSONString(res.getCellList()));
     }
 }

@@ -6,8 +6,8 @@ import io.github.jxch.capitals.chart.service.Index3ChartService;
 import io.github.jxch.capitals.index3.dataviz.DatavizGraphDataApi;
 import io.github.jxch.capitals.index3.dataviz.model.DatavizGraphDataRes;
 import io.github.jxch.capitals.index3.logic.breadth.BreadthScoreApi;
-import io.github.jxch.capitals.index3.logic.breadth.model.BreadthScoreItem;
 import io.github.jxch.capitals.index3.logic.breadth.model.BreadthScoreRes;
+import io.github.jxch.capitals.index3.model.BreadthCell;
 import lombok.RequiredArgsConstructor;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
@@ -50,7 +50,7 @@ public class Index3ChartServiceImpl implements Index3ChartService, KeyGenerator 
         Graphics g = image.getGraphics();
 
         for (int row = 0; row < types.size(); row++) {
-            List<Integer> scores = breath.getScoreByType(types.get(row)).stream().map(BreadthScoreItem::getScore).toList().subList(0, param.getLength());
+            List<Integer> scores = breath.getScoreByType(types.get(row)).stream().map(BreadthCell::getScore).toList().subList(0, param.getLength());
 
             g.setColor(Color.GRAY);
             g.fillRect(0, row * cellSize, cellSize, cellSize);

@@ -1,6 +1,7 @@
 package io.github.jxch.capitals.index3.logic.breadth.model;
 
 import cn.hutool.core.date.DateUtil;
+import io.github.jxch.capitals.index3.model.BreadthCell;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,25 +21,31 @@ public class BreadthScoreRes {
         return x.getOpts().getSeries().get(0).getData();
     }
 
-    public List<BreadthScoreItem> getItemList() {
-        return getRawData().stream().map(item -> BreadthScoreItem.builder()
-                .date(DateUtil.parseDate(item.get(0)).toLocalDateTime().toLocalDate())
-                .type(item.get(2))
-                .score(Integer.valueOf(item.get(1).trim()))
+    public List<BreadthCell> getCellList() {
+        return getRawData().stream().map(cell -> BreadthCell.builder()
+                .date(DateUtil.parseDate(cell.get(0)).toLocalDateTime().toLocalDate())
+                .type(cell.get(2))
+                .score(Integer.valueOf(cell.get(1).trim()))
                 .build()).toList();
     }
 
     public List<String> getTypes() {
-        return getItemList().stream().map(BreadthScoreItem::getType).distinct().sorted().toList();
+        return getCellList().stream().map(BreadthCell::getType).distinct().sorted().toList();
     }
 
-    public List<BreadthScoreItem> getScoreByType(String type) {
-        return getItemList().stream().filter(item -> Objects.equals(type, item.getType()))
-                .sorted(Comparator.comparing(BreadthScoreItem::getDate).reversed()).toList();
+    public List<BreadthCell> getScoreByType(String type) {
+        return getCellList().stream().filter(cell -> Objects.equals(type, cell.getType()))
+                .sorted(Comparator.comparing(BreadthCell::getDate).reversed()).toList();
     }
 
     public List<LocalDate> getDate() {
-        return getItemList().stream().map(BreadthScoreItem::getDate).distinct().sorted(Comparator.reverseOrder()).toList();
+        return getCellList().stream().map(BreadthCell::getDate).distinct().sorted(Comparator.reverseOrder()).toList();
+    }
+
+    public List<BreadthCell> getLast(int len) {
+        List<LocalDate> dateList = getDate();
+        LocalDate minDate = dateList.subList(0, Math.min(len, dateList.size())).stream().min(Comparator.naturalOrder()).orElseThrow();
+        return getCellList().stream().filter(cell -> cell.getDate().toEpochDay() >= minDate.toEpochDay()).toList();
     }
 
     @Data

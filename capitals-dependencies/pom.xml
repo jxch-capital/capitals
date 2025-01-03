@@ -26,6 +26,11 @@
         <dependencies>
             <dependency>
                 <groupId>io.github.jxch</groupId>
+                <artifactId>capitals-schema</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.jxch</groupId>
                 <artifactId>stock4j-api</artifactId>
                 <version>${revision}</version>
             </dependency>

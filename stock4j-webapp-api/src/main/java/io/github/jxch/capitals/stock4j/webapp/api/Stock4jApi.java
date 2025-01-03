@@ -1,5 +1,6 @@
 package io.github.jxch.capitals.stock4j.webapp.api;
 
+import io.github.jxch.capitals.cloud.common.api.CapitalsCloudServerNames;
 import io.github.jxch.capitals.stock4j.api.StockBatchParam;
 import io.github.jxch.capitals.stock4j.api.StockBatchRes;
 import io.github.jxch.capitals.stock4j.api.StockParam;
@@ -17,7 +18,7 @@ import java.util.List;
 
 @RequestMapping("/stock4j")
 @Tag(name = "股票", description = "股票信息查询接口")
-@ReactiveFeignClient(name = "Capitals-Stock4j", fallbackFactory = CommonFallbackFactory.class)
+@ReactiveFeignClient(name = CapitalsCloudServerNames.STOCK4J, fallbackFactory = CommonFallbackFactory.class)
 public interface Stock4jApi {
 
     @PostMapping("query")

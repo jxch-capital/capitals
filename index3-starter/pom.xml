@@ -61,6 +61,10 @@
             <groupId>io.github.jxch</groupId>
             <artifactId>crawler-common</artifactId>
         </dependency>
+        <dependency>
+            <groupId>io.github.jxch</groupId>
+            <artifactId>capitals-schema</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
