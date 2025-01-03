@@ -1,4 +1,4 @@
-import {h, readonly} from 'vue';
+import {h} from 'vue';
 import {createRouter, createWebHistory} from 'vue-router';
 import {NIcon} from 'naive-ui';
 import {BackupTableFilled, HomeOutlined} from "@vicons/material";
