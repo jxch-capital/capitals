@@ -41,8 +41,6 @@ spring:
       host: jiangxicheng.online
       port: 6379
       database: 0
-  main:
-    allow-bean-definition-overriding: true
 
 management:
   endpoints:
