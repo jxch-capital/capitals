@@ -1,9 +1,11 @@
+import {h} from 'vue';
 import {createRouter, createWebHistory} from 'vue-router';
-import Home from '@/views/Home.vue';
+import {NIcon} from 'naive-ui';
 import {BackupTableFilled, HomeOutlined} from "@vicons/material";
+import {ApiOutlined} from "@vicons/antd";
 import type {Component} from "vue";
-import {NIcon} from 'naive-ui'
-import {h} from 'vue'
+import Home from '@/views/Home.vue';
+import RApiDoc from "@/components/RApiDoc.vue";
 
 function renderIcon(icon: Component) {
     return () => h(NIcon, null, {default: () => h(icon)})
@@ -35,6 +37,17 @@ const routes = [
         whateverKey: 'stock-pool',
         icon: renderIcon(BackupTableFilled),
         component: Home,
+    },
+    {
+        path: '/api',
+        name: 'api',
+        whateverLabel: 'API文档',
+        whateverKey: 'api',
+        icon: renderIcon(ApiOutlined),
+        component: RApiDoc,
+        props: () => ({
+            apiUrl: "http://localhost:8088/public/doc/stock4j/v3/api-docs",
+        }),
     }
 ];
 

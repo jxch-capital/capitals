@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import {onMounted} from 'vue';
-import auth from '../auth'
+import {onBeforeMount} from 'vue';
+import auth from '@/auth'
+import api from '@/api'
 
 
-onMounted( () => {
-
+onBeforeMount( () => {
+  api.pub.session();
 });
 
 </script>

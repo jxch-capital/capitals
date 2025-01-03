@@ -58,10 +58,12 @@
         <ta4j.version>0.17</ta4j.version>
         <jsoup.version>1.18.1</jsoup.version>
         <postgresql.version>42.7.4</postgresql.version>
+        <r2dbc.postgresql.version>1.0.7.RELEASE</r2dbc.postgresql.version>
         <curator.version>5.7.1</curator.version>
         <spring-boot-admin.version>3.4.0</spring-boot-admin.version>
         <vaadin.version>24.5.6</vaadin.version>
         <feign.reactor.version>4.2.1</feign.reactor.version>
+        <knife4j.version>4.5.0</knife4j.version>
     </properties>
 
     <dependencyManagement>
@@ -170,6 +172,11 @@
                 <version>${postgresql.version}</version>
             </dependency>
             <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>r2dbc-postgresql</artifactId>
+                <version>${r2dbc.postgresql.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.apache.curator</groupId>
                 <artifactId>curator-framework</artifactId>
                 <version>${curator.version}</version>
@@ -183,6 +190,11 @@
                 <groupId>de.codecentric</groupId>
                 <artifactId>spring-boot-admin-starter-client</artifactId>
                 <version>${spring-boot-admin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-openapi3-webflux-jakarta-spring-boot-starter</artifactId>
+                <version>${knife4j.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.maven.plugins</groupId>

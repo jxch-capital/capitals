@@ -27,4 +27,6 @@ public class StockParam {
     private StockInterval interval = StockInterval.DAY_1;
     @Builder.Default
     private StockEX stockEX = StockEX.GLOBAL;
+    @Builder.Default
+    private StockEngine stockEngine = StockEngine.DEFAULT;
 }

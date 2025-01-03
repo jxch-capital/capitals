@@ -1,41 +1,34 @@
 package io.github.jxch.capitals.stock4j.webapp.model.entity;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
-import org.hibernate.annotations.Comment;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
-@Entity
-@Comment("股票池")
-@Table(name = "stock_pool", indexes = {
-        @Index(name = "stock_pool_index_userid_name", columnList = "userid,name")
-})
+@Table("stock_pool")
 public class StockPool {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 50)
-    @Comment("用户ID")
+    @Column("userid") // 用户ID
     private String userid;
 
-    @Column(nullable = false)
-    @Comment("股票池名称")
+    @Column("name") // 股票池名称
     private String name;
 
-    @Lob
-    @Comment("股票代码，逗号区分")
+    @Column("codes") // 股票代码，逗号区分
     private String codes;
 
-    @Column(nullable = false)
-    @Comment("股票引擎")
+    @Column("engine") // 股票引擎
     private String engine;
 }

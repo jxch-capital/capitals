@@ -53,12 +53,12 @@ public class YahooCsvApi implements YahooStockApi {
 
     @Override
     public boolean support(StockParam param) {
-        return !Objects.equals(param.getInterval(), StockInterval.REAL);
+        return YahooStockApi.super.support(param) && !Objects.equals(param.getInterval(), StockInterval.REAL);
     }
 
     @Override
     public boolean support(StockBatchParam param) {
-        return !Objects.equals(param.getInterval(), StockInterval.REAL);
+        return YahooStockApi.super.support(param) && !Objects.equals(param.getInterval(), StockInterval.REAL);
     }
 
 }

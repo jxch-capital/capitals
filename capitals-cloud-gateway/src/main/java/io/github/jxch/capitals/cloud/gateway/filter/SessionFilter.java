@@ -13,7 +13,8 @@ public class SessionFilter implements GlobalFilter {
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         return exchange.getSession().flatMap(session -> {
-            session.getAttributes().put("gateway", "test");
+            // todo 用户信息存入 session
+            // cookie 中存在 cookieauth 表示已经登录
             return chain.filter(exchange);
         });
     }

@@ -1,9 +1,9 @@
 import {instance} from './instance'
 
-const userCookie = () => instance.get('/dev/jkl/public/userCookie');
+const session = () => instance.get('/public/session');
 
 const pub = {
-    userCookie
+    session
 }
 
 

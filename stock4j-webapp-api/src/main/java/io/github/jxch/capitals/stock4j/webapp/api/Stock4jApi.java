@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import reactivefeign.spring.config.ReactiveFeignClient;
 import reactor.core.publisher.Mono;
 
+import java.util.List;
+
 @RequestMapping("/stock4j")
-@ReactiveFeignClient(name = "Capitals-Stock4j", fallback = Stock4jApiFallback.class)
+@ReactiveFeignClient(name = "Capitals-Stock4j", fallbackFactory = CommonFallbackFactory.class)
 public interface Stock4jApi {
 
     @PostMapping("query")
@@ -19,5 +21,8 @@ public interface Stock4jApi {
 
     @PostMapping("queryBatch")
     Mono<StockBatchRes> query(@RequestBody StockBatchParam param);
+
+    @RequestMapping("/engines")
+    Mono<List<String>> stockEngines();
 
 }

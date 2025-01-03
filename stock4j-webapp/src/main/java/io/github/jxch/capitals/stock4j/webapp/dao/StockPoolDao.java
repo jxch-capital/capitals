@@ -1,7 +1,7 @@
 package io.github.jxch.capitals.stock4j.webapp.dao;
 
 import io.github.jxch.capitals.stock4j.webapp.model.entity.StockPool;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 
-public interface StockPoolDao extends JpaRepository<StockPool, Long> {
+public interface StockPoolDao extends ReactiveCrudRepository<StockPool, Long> {
 }
