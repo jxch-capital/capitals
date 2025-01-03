@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import Menu from "./Menu.vue";
 
-// defineProps<{ msg: string }>()
 </script>
 
 <template>
