@@ -1,22 +1,23 @@
 import {h} from 'vue';
-import {createRouter, createWebHistory} from 'vue-router';
+import {createRouter, createWebHistory, type RouteRecordRaw} from 'vue-router';
 import {NIcon} from 'naive-ui';
+import type {MenuOption} from 'naive-ui'
 import {BackupTableFilled, HomeOutlined} from "@vicons/material";
 import {ApiOutlined} from "@vicons/antd";
 import {DocumentsOutline} from "@vicons/ionicons5";
 import type {Component} from "vue";
-import Home from '@/views/Home.vue';
-import RApiDoc from "@/components/RApiDoc.vue";
 
 function renderIcon(icon: Component) {
     return () => h(NIcon, null, {default: () => h(icon)})
 }
 
-const routes = [
+export declare type RouteMenu = RouteRecordRaw | MenuOption;
+
+const routes: RouteMenu[] = [
     {
         path: '/',
         name: '',
-        component: Home,
+        component: import('@/views/Home.vue'),
     },
     {
         path: '/home',
@@ -24,7 +25,7 @@ const routes = [
         whateverLabel: '首页',
         whateverKey: 'home',
         icon: renderIcon(HomeOutlined),
-        component: Home,
+        component: () => import('@/views/Home.vue'),
     },
     {
         path: '/logging',
@@ -37,7 +38,7 @@ const routes = [
         whateverLabel: '股票池',
         whateverKey: 'stock-pool',
         icon: renderIcon(BackupTableFilled),
-        component: Home,
+        component: () => import('@/views/Home.vue'),
     },
     {
         whateverLabel: 'API文档',
@@ -55,20 +56,24 @@ const routes = [
     {
         path: '/api-stock4j',
         name: 'api-stock4j',
-        component: RApiDoc,
+        component: () => import('@/components/RApiDoc.vue'),
         props: () => ({
             apiUrl: import.meta.env.VITE_API_STOCK4J_URL,
         }),
     }
 ];
 
+const vueRouterRoutes: readonly RouteRecordRaw[] = routes.filter(
+    (route): route is RouteRecordRaw => 'path' in route && 'component' in route
+);
+
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
-    routes
+    routes: vueRouterRoutes
 });
 router.afterEach((to) => {
     document.title = (to.meta as { title?: string }).title || 'Capitals';
 });
 
-export const menu = routes.filter(item => item.hasOwnProperty("whateverLabel"));
+export const menu: MenuOption[] = routes.filter(item => item.hasOwnProperty("whateverLabel")) as MenuOption[];
 export default router;
