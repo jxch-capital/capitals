@@ -1,8 +1,9 @@
-import {h} from 'vue';
+import {h, readonly} from 'vue';
 import {createRouter, createWebHistory} from 'vue-router';
 import {NIcon} from 'naive-ui';
 import {BackupTableFilled, HomeOutlined} from "@vicons/material";
 import {ApiOutlined} from "@vicons/antd";
+import {DocumentsOutline} from "@vicons/ionicons5";
 import type {Component} from "vue";
 import Home from '@/views/Home.vue';
 import RApiDoc from "@/components/RApiDoc.vue";
@@ -39,27 +40,35 @@ const routes = [
         component: Home,
     },
     {
-        path: '/api',
-        name: 'api',
         whateverLabel: 'API文档',
         whateverKey: 'api',
-        icon: renderIcon(ApiOutlined),
+        icon: renderIcon(DocumentsOutline),
+        whateverChildren: [
+            {
+                path: '/api-stock4j',
+                whateverLabel: 'STOCK4J',
+                whateverKey: 'api-stock4j',
+                icon: renderIcon(ApiOutlined),
+            }
+        ]
+    },
+    {
+        path: '/api-stock4j',
+        name: 'api-stock4j',
         component: RApiDoc,
         props: () => ({
-            apiUrl: "http://localhost:8088/public/doc/stock4j/v3/api-docs",
+            apiUrl: import.meta.env.VITE_API_STOCK4J_URL,
         }),
     }
 ];
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
-    routes,
+    routes
 });
-
-export const menu = routes.filter(item => item.hasOwnProperty("whateverLabel"));
-export default router;
-
 router.afterEach((to) => {
     document.title = (to.meta as { title?: string }).title || 'Capitals';
 });
 
+export const menu = routes.filter(item => item.hasOwnProperty("whateverLabel"));
+export default router;
