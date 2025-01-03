@@ -11,6 +11,19 @@ spring:
         root: /services/${spring.profiles.active}/
         instanceHost: ${HOSTNAME}
         preferIpAddress: false
+    cors:
+      cors-configurations:
+        '[/**]':
+          allowed-origin-patterns:
+            - "*"
+          allowed-methods:
+            - "*"
+          allowed-headers:
+            - "*"
+          exposed-headers:
+            - "Set-Cookie"
+            - "Authorization"
+          allow-credentials: true
   rabbitmq:
     host: jiangxicheng.online
     port: 5672
