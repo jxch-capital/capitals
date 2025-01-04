@@ -17,6 +17,9 @@ spring:
       transport:
         dashboard: jiangxicheng.online:8088
     gateway:
+      global-filter:
+        response-header-distinct:
+          headers: Access-Control-Allow-Origin,Access-Control-Allow-Credentials,Access-Control-Expose-Headers,Vary
       default-filters:
         - TokenRelay
       routes:
