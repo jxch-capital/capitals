@@ -1,5 +1,15 @@
 #app {
   margin: 0;
   padding: 0;
-  text-align: center;
+}
+
+.vertical-text {
+  writing-mode: vertical-rl; /* 竖排文字，从右到左排列 */
+  text-orientation: upright; /* 确保字符直立显示 */
+  transform: rotate(360deg); /* 倒转文字方向 */
+  text-align: center; /* 单元格内文字居中 */
+  white-space: nowrap; /* 禁止文字换行 */
+  width: 30px; /* 限制单元格宽度 */
+  max-width: 30px; /* 设置最大宽度 */
+  word-break: break-word; /* 防止文字溢出 */
 }

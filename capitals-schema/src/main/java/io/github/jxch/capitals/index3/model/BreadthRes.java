@@ -13,6 +13,7 @@ import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.IntStream;
 
 @Data
 @Builder
@@ -46,6 +47,13 @@ public class BreadthRes {
     @Schema(description = "板块得分列表，按type和date属性列表的顺序")
     public List<List<Integer>> getScore() {
         return getType().stream().map(type -> getType(type).stream().map(BreadthCell::getScore).toList()).toList();
+    }
+
+    @JsonProperty("market")
+    @Schema(description = "市场得分，各板块在同一日期的分数相加")
+    public List<Integer> getMarketScore() {
+        return getScore().stream().reduce((score1, score2) -> IntStream.range(0, score1.size()).map(
+                index -> score1.get(index) + score2.get(index)).boxed().toList()).orElseThrow();
     }
 
 }

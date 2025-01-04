@@ -5,6 +5,7 @@ import io.github.jxch.capitals.index3.model.BreadthRes;
 import io.github.jxch.capitals.index3.model.BreathParam;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,6 @@ public interface Index3Api {
 
     @PostMapping("breath")
     @Operation(summary = "市场呼吸图", description = "美股板块呼吸图")
-    BreadthRes breath(@RequestBody BreathParam breathParam);
+    BreadthRes breath(@RequestBody @Valid BreathParam breathParam);
 
 }

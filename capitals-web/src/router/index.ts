@@ -5,6 +5,7 @@ import type {MenuOption} from 'naive-ui'
 import {BackupTableFilled, HomeOutlined} from "@vicons/material";
 import {ApiOutlined} from "@vicons/antd";
 import {DocumentsOutline} from "@vicons/ionicons5";
+import {HeatMap03} from "@vicons/carbon";
 import type {Component} from "vue";
 
 function renderIcon(icon: Component) {
@@ -31,6 +32,14 @@ const routes: RouteMenu[] = [
         path: '/logging',
         name: 'logging',
         component: () => import('@/views/Logging.vue'),
+    },
+    {
+        path: '/breath',
+        name: 'breath',
+        whateverLabel: '市场呼吸图（热力图）',
+        whateverKey: 'breath',
+        icon: renderIcon(HeatMap03),
+        component: () => import('@/views/Breath.vue'),
     },
     {
         path: '/stock-pool',
