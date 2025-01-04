@@ -1,7 +1,11 @@
 package io.github.jxch.capitals.stock4j.webapp.controller;
 
-import io.github.jxch.capitals.stock4j.api.*;
 import io.github.jxch.capitals.stock4j.api3.lb.StockLBApi;
+import io.github.jxch.capitals.stock4j.model.StockBatchParam;
+import io.github.jxch.capitals.stock4j.model.StockBatchRes;
+import io.github.jxch.capitals.stock4j.model.StockParam;
+import io.github.jxch.capitals.stock4j.model.StockRes;
+import io.github.jxch.capitals.stock4j.type.StockEngine;
 import io.github.jxch.capitals.stock4j.webapp.api.Stock4jApi;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RestController;

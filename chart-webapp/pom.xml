@@ -45,7 +45,7 @@
         </dependency>
         <dependency>
             <groupId>io.github.jxch</groupId>
-            <artifactId>stock4j-api</artifactId>
+            <artifactId>capitals-schema</artifactId>
         </dependency>
         <dependency>
             <groupId>io.github.jxch</groupId>

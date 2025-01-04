@@ -1,6 +1,6 @@
 package io.github.jxch.capitals.stock4j.api3.yahoo.quote;
 
-import io.github.jxch.capitals.stock4j.api.*;
+import io.github.jxch.capitals.stock4j.model.*;
 import org.mapstruct.Mapper;
 
 import java.util.Date;

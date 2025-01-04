@@ -1,7 +1,7 @@
 package io.github.jxch.capitals.chart.core;
 
-import io.github.jxch.capitals.stock4j.api.KLine;
-import io.github.jxch.capitals.stock4j.api.KLineUtil;
+import io.github.jxch.capitals.stock4j.model.KLine;
+import io.github.jxch.capitals.stock4j.utils.KLineUtil;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.DateAxis;

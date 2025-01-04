@@ -1,9 +1,9 @@
 package io.github.jxch.capitals.stock4j.api3.yahoo.csv;
 
-import io.github.jxch.capitals.stock4j.api.KLine;
-import io.github.jxch.capitals.stock4j.api.StockInterval;
-import io.github.jxch.capitals.stock4j.api.StockParam;
-import io.github.jxch.capitals.stock4j.api.StockRes;
+import io.github.jxch.capitals.stock4j.model.KLine;
+import io.github.jxch.capitals.stock4j.model.StockParam;
+import io.github.jxch.capitals.stock4j.model.StockRes;
+import io.github.jxch.capitals.stock4j.type.StockInterval;
 import org.mapstruct.Mapper;
 import org.springframework.beans.BeanUtils;
 

@@ -1,6 +1,6 @@
 package io.github.jxch.capitals.chart.utils;
 
-import io.github.jxch.capitals.stock4j.api.KLine;
+import io.github.jxch.capitals.stock4j.model.KLine;
 import org.jfree.data.time.Day;
 import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;

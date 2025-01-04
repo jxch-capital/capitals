@@ -1,6 +1,10 @@
 package io.github.jxch.capitals.stock4j.api3.lb;
 
-import io.github.jxch.capitals.stock4j.api.*;
+import io.github.jxch.capitals.stock4j.api.StockApi;
+import io.github.jxch.capitals.stock4j.model.StockBatchParam;
+import io.github.jxch.capitals.stock4j.model.StockBatchRes;
+import io.github.jxch.capitals.stock4j.model.StockParam;
+import io.github.jxch.capitals.stock4j.model.StockRes;
 
 import java.util.List;
 

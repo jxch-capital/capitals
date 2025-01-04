@@ -1,6 +1,6 @@
 package io.github.jxch.capitals.chart.model;
 
-import io.github.jxch.capitals.stock4j.api.StockParam;
+import io.github.jxch.capitals.stock4j.model.StockParam;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

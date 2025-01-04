@@ -5,9 +5,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
+import org.springframework.security.oauth2.server.resource.authentication.JwtGrantedAuthoritiesConverter;
+import org.springframework.security.oauth2.server.resource.authentication.ReactiveJwtAuthenticationConverterAdapter;
 import org.springframework.security.web.server.SecurityWebFilterChain;
 import org.springframework.web.cors.reactive.CorsConfigurationSource;
 
@@ -30,9 +32,23 @@ public class SecurityConfig {
                     permits.forEach(permit -> authorize.pathMatchers(permit).permitAll());
                     authorize.anyExchange().authenticated();
                 })
-                .oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()));
+                .oauth2ResourceServer(oauth2 -> oauth2.jwt(
+                        jwtSpec -> jwtSpec.jwtAuthenticationConverter(jwtAuthenticationConverter())));
 
         return http.build();
     }
+
+    @Bean
+    public ReactiveJwtAuthenticationConverterAdapter jwtAuthenticationConverter() {
+        JwtGrantedAuthoritiesConverter grantedAuthoritiesConverter = new JwtGrantedAuthoritiesConverter();
+        grantedAuthoritiesConverter.setAuthorityPrefix("ROLE_");
+        grantedAuthoritiesConverter.setAuthoritiesClaimName("realm_access.roles");
+
+        JwtAuthenticationConverter converter = new JwtAuthenticationConverter();
+        converter.setJwtGrantedAuthoritiesConverter(grantedAuthoritiesConverter);
+
+        return new ReactiveJwtAuthenticationConverterAdapter(converter);
+    }
+
 
 }

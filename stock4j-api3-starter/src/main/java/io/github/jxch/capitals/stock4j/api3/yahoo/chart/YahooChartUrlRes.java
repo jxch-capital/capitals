@@ -1,6 +1,6 @@
 package io.github.jxch.capitals.stock4j.api3.yahoo.chart;
 
-import io.github.jxch.capitals.stock4j.api.StockServiceNoResException;
+import io.github.jxch.capitals.stock4j.exception.StockServiceNoResException;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;

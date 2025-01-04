@@ -1,9 +1,9 @@
 package io.github.jxch.capitals.stock4j.api3.yahoo;
 
 import io.github.jxch.capitals.stock4j.api.StockApi;
-import io.github.jxch.capitals.stock4j.api.StockBatchParam;
-import io.github.jxch.capitals.stock4j.api.StockEngine;
-import io.github.jxch.capitals.stock4j.api.StockParam;
+import io.github.jxch.capitals.stock4j.model.StockBatchParam;
+import io.github.jxch.capitals.stock4j.model.StockParam;
+import io.github.jxch.capitals.stock4j.type.StockEngine;
 
 import java.util.Objects;
 

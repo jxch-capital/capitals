@@ -1,10 +1,14 @@
 package io.github.jxch.capitals.stock4j.api3.yahoo.quote;
 
 import com.alibaba.fastjson2.JSONObject;
-import io.github.jxch.capitals.stock4j.api.*;
 import io.github.jxch.capitals.stock4j.api3.Stock4jApi3Config;
 import io.github.jxch.capitals.stock4j.api3.yahoo.YahooConfig;
 import io.github.jxch.capitals.stock4j.api3.yahoo.YahooStockApi;
+import io.github.jxch.capitals.stock4j.model.StockBatchParam;
+import io.github.jxch.capitals.stock4j.model.StockBatchRes;
+import io.github.jxch.capitals.stock4j.model.StockParam;
+import io.github.jxch.capitals.stock4j.model.StockRes;
+import io.github.jxch.capitals.stock4j.type.StockInterval;
 import lombok.SneakyThrows;
 import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;

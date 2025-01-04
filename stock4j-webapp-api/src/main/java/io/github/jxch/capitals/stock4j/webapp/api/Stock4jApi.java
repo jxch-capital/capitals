@@ -1,10 +1,10 @@
 package io.github.jxch.capitals.stock4j.webapp.api;
 
 import io.github.jxch.capitals.cloud.common.api.CapitalsCloudServerNames;
-import io.github.jxch.capitals.stock4j.api.StockBatchParam;
-import io.github.jxch.capitals.stock4j.api.StockBatchRes;
-import io.github.jxch.capitals.stock4j.api.StockParam;
-import io.github.jxch.capitals.stock4j.api.StockRes;
+import io.github.jxch.capitals.stock4j.model.StockBatchParam;
+import io.github.jxch.capitals.stock4j.model.StockBatchRes;
+import io.github.jxch.capitals.stock4j.model.StockParam;
+import io.github.jxch.capitals.stock4j.model.StockRes;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.GetMapping;

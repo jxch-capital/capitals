@@ -31,11 +31,6 @@
             </dependency>
             <dependency>
                 <groupId>io.github.jxch</groupId>
-                <artifactId>stock4j-api</artifactId>
-                <version>${revision}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.github.jxch</groupId>
                 <artifactId>crawler-common</artifactId>
                 <version>${revision}</version>
             </dependency>

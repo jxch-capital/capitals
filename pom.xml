@@ -17,7 +17,6 @@
         <module>index3-starter</module>
         <module>indicator-starter</module>
         <module>stock4j-api3-starter</module>
-        <module>stock4j-api</module>
         <module>stock4j-webapp-api</module>
         <module>stock4j-webapp</module>
         <module>chart-webapp</module>
