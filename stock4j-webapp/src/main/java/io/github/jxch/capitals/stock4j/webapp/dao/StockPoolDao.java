@@ -10,4 +10,6 @@ public interface StockPoolDao extends ReactiveCrudRepository<StockPool, Long> {
 
     Mono<List<StockPool>> findByUserid(String userid);
 
+    Mono<Void> deleteByIdAndUserid(Long id, String userid);
+
 }

@@ -32,7 +32,7 @@ public class StockPoolServiceImpl implements StockPoolService {
 
     @Override
     public Mono<Void> delete(Long id) {
-        return stockPoolDao.deleteById(id);
+        return MonoUtil.sessionUserid(userid -> stockPoolDao.deleteByIdAndUserid(id, userid));
     }
 
     @Override
