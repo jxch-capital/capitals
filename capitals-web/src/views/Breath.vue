@@ -14,7 +14,7 @@ const breathRes = ref({} as BreathRes)
 
 const cellColorScale = chroma.scale(['red', 'green']).domain([0, 100]);
 const marketColorScale = chroma.scale(['red', 'green']).domain([0, 1100]);
-const getCellColor = (score: number, scale) => {
+const getCellColor = (score: number, scale: chroma.Scale) => {
   return scale(score).hex();
 };
 
@@ -68,7 +68,7 @@ onMounted(() => {
       </tr>
       <tr>
         <td>DATE</td>
-        <td v-for="date in breathRes.date" class="vertical-text">{{ date.replaceAll('-', '') }}</td>
+        <td v-for="date in breathRes.date" class="vertical-text">{{ date.replace(/-/g, '') }}</td>
       </tr>
       </tbody>
     </n-table>
