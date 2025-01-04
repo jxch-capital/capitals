@@ -15,6 +15,6 @@ import lombok.experimental.Accessors;
 @Schema(description = "市场呼吸图参数")
 public class BreathParam {
     @Builder.Default
-    @Schema(description = "显示最近几条的数据")
+    @Schema(description = "显示最近几条的数据", minimum = "10")
     private int length = 300;
 }

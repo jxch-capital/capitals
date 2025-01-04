@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import reactivefeign.spring.config.ReactiveFeignClient;
 
-@RequestMapping("/index3")
-@Tag(name = "三方市场指数", description = "三方市场指数")
+@RequestMapping("/public/index3")
+@Tag(name = "三方市场指数", description = "三方市场指数（允许公开访问）")
 @ReactiveFeignClient(name = CapitalsCloudServerNames.STOCK4J, fallbackFactory = CommonFallbackFactory.class)
 public interface Index3Api {
 
