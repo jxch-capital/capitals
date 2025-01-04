@@ -20,7 +20,7 @@ public class StockPoolServiceImpl implements StockPoolService {
     private final StockPoolDao stockPoolDao;
 
     @Override
-    public Mono<List<StockPoolDto>> findByUserid() {
+    public Mono<List<StockPoolDto>> findAll() {
         return MonoUtil.sessionUserid(userid -> stockPoolDao.findByUserid(userid).map(stockPoolConverter::toStockPoolDtoList));
     }
 

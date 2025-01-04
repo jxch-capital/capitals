@@ -15,8 +15,8 @@ public class StockPoolController implements StockPoolApi {
     private final StockPoolService stockPoolService;
 
     @Override
-    public Mono<List<StockPoolDto>> findByUserid() {
-        return stockPoolService.findByUserid();
+    public Mono<List<StockPoolDto>> findAll() {
+        return stockPoolService.findAll();
     }
 
     @Override

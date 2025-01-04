@@ -22,9 +22,9 @@ import java.util.List;
 @ReactiveFeignClient(name = CapitalsCloudServerNames.STOCK4J, fallbackFactory = CommonFallbackFactory.class)
 public interface StockPoolApi {
 
-    @PostMapping("findByUserid")
+    @PostMapping("findAll")
     @Operation(summary = "查询股票池", description = "根据用户id查询股票池")
-    Mono<List<StockPoolDto>> findByUserid();
+    Mono<List<StockPoolDto>> findAll();
 
     @PostMapping("create")
     @Operation(summary = "新增股票池", description = "为该用户新增一个股票池, 并且返回已经创建的股票池")
