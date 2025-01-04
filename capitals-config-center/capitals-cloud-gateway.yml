@@ -43,6 +43,13 @@ spring:
           filters:
             - StripPrefix=2
             - PreserveHostHeader=true
+        - id: capitals-stock4j-route
+          uri: lb://Capitals-Stock4j
+          predicates:
+            - Path=/stock4j/**
+          filters:
+            - StripPrefix=1
+            - PreserveHostHeader=true
         - id: capitals-stock4j-doc-route
           uri: lb://Capitals-Stock4j
           predicates:
