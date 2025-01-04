@@ -41,7 +41,7 @@ onMounted(() => {
         </n-form>
       </n-space>
       <n-space justify="start">
-        <n-table size="small">
+        <n-table size="small" :bordered="false" :bottom-bordered="false" :single-column="true" :single-line="true">
           <tbody v-if="breathRes">
           <tr v-for="(typeScores) in breathRes.score">
             <td v-for="score in typeScores" :style="{ backgroundColor: getCellColor(score, cellColorScale) }">
@@ -51,7 +51,7 @@ onMounted(() => {
         </n-table>
       </n-space>
     </n-card>
-    <n-table size="small" style="text-align: center">
+    <n-table size="small" style="text-align: center" :bordered="false" :bottom-bordered="false" :single-column="true" :single-line="true">
       <tbody v-if="breathRes">
       <tr v-for="(typeScores, typeIndex) in breathRes.score">
         <td>{{ breathRes.type[typeIndex] }}</td>
