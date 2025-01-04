@@ -31,7 +31,7 @@ public class ResponseHeaderDistinctFilter implements GlobalFilter {
             HttpHeaders httpHeaders = exchange.getResponse().getHeaders();
             for (String header : this.headers) {
                 List<String> values = httpHeaders.get(header);
-                if (Objects.nonNull(values) && !values.isEmpty()) {
+                if (Objects.nonNull(values) && values.size() > 1) {
                     httpHeaders.put(header, values.stream().distinct().collect(Collectors.toList()));
                 }
             }
