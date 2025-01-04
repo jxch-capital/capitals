@@ -26,6 +26,7 @@
         <module>capitals-cloud-gateway</module>
         <module>capitals-cloud-common-api</module>
         <module>capitals-schema</module>
+        <module>capitals-cloud-datasource</module>
     </modules>
 
     <parent>

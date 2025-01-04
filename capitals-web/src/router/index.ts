@@ -47,7 +47,7 @@ const routes: RouteMenu[] = [
         whateverLabel: '股票池',
         whateverKey: 'stock-pool',
         icon: renderIcon(BackupTableFilled),
-        component: () => import('@/views/Home.vue'),
+        component: () => import('@/views/StockPool.vue'),
     },
     {
         whateverLabel: 'API文档',

@@ -1,6 +1,6 @@
 import {instance} from './instance'
 
-const session = () => instance.get('/public/session');
+const session = () => instance.get('/session');
 
 export declare type BreathParam = { length: number }
 export declare type BreathRes = { type: string[], date: string[], score: number[][], market: number[] }

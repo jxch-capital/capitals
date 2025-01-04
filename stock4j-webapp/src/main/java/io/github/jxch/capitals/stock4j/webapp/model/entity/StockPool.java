@@ -1,5 +1,6 @@
 package io.github.jxch.capitals.stock4j.webapp.model.entity;
 
+import io.github.jxch.capitals.stock4j.type.StockEngine;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -30,5 +31,5 @@ public class StockPool {
     private String codes;
 
     @Column("engine") // 股票引擎
-    private String engine;
+    private StockEngine engine;
 }
