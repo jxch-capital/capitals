@@ -4,3 +4,7 @@ stock4j:
 server:
   port: 9090
 
+logging:
+  level:
+    root: info
+    org.springframework.web: debug

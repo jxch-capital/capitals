@@ -6,12 +6,14 @@ import io.github.jxch.capitals.stock4j.webapp.converter.StockPoolConverter;
 import io.github.jxch.capitals.stock4j.webapp.dao.StockPoolDao;
 import io.github.jxch.capitals.stock4j.webapp.service.StockPoolService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
 
+@Slf4j
 @Service
 @Transactional
 @RequiredArgsConstructor
@@ -21,7 +23,7 @@ public class StockPoolServiceImpl implements StockPoolService {
 
     @Override
     public Mono<List<StockPoolDto>> findAll() {
-        return MonoUtil.sessionUserid(userid -> stockPoolDao.findByUserid(userid).map(stockPoolConverter::toStockPoolDtoList));
+        return MonoUtil.sessionUserid(userid -> stockPoolDao.findByUserid(userid).collectList().map(stockPoolConverter::toStockPoolDtoList));
     }
 
     @Override

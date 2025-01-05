@@ -27,12 +27,8 @@ public class StockPoolDto {
     @NotNull(message = "根据 id 更新数据库，所以不能为空", groups = UpdateGroup.class)
     @NotNull(message = "根据 id 删除数据库，所以不能为空", groups = DeleteGroup.class)
     private Long id;
-    @NotNull(message = "创建股票池时，用户 id 不能为空", groups = CreateGroup.class)
     @Schema(description = "用户id")
-    @Null(message = "不能传 userid", groups = CreateGroup.class)
-    @Null(message = "不能传 userid", groups = UpdateGroup.class)
-    @Null(message = "不能传 userid", groups = DeleteGroup.class)
-    @Null(message = "不能传 userid", groups = SelectGroup.class)
+    @Null(message = "不能传 userid", groups = {CreateGroup.class, DeleteGroup.class, SelectGroup.class, UpdateGroup.class})
     private String userid;
     @NotNull(message = "创建股票池时，股票池名称不能为空", groups = CreateGroup.class)
     @Schema(description = "股票池名称", example = "大盘")

@@ -17,3 +17,10 @@ instance.interceptors.request.use(config => {
     return config
 }, e => Promise.reject(e));
 
+instance.interceptors.response.use(
+    (response) => response,
+    (error) => {
+        console.error('响应拦截器捕获到错误:', error);
+        return Promise.reject(error);
+    }
+);

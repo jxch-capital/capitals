@@ -5,7 +5,6 @@ export const useAuthStore = defineStore('auth', {
     state: (): { user: User | null } => ({
         user: null,
     }),
-    persist: false,
     actions: {
         loadUser(user: User) {
             this.user = user;
@@ -26,6 +25,15 @@ export const useAuthStore = defineStore('auth', {
                 return null;
             }
         },
+    },
+    persist: {
+        enabled: true,
+        strategies: [
+            {
+                key: 'user-store',
+                storage: sessionStorage,
+            },
+        ],
     },
 });
 

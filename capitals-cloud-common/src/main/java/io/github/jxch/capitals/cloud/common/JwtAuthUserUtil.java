@@ -1,14 +1,16 @@
 package io.github.jxch.capitals.cloud.common;
 
-import cn.hutool.core.bean.BeanUtil;
+import com.alibaba.fastjson2.JSON;
 import io.github.jxch.capitals.oauth2.model.JwtAuthUser;
 import org.springframework.web.server.WebSession;
+
+import java.util.Objects;
 
 public class JwtAuthUserUtil {
 
     public static JwtAuthUser getUser(final WebSession session) {
-        JwtAuthUser jwtAuthUser = BeanUtil.toBean(
-                session.getAttributes().get(JwtAuthUser.class.getSimpleName()),
+        JwtAuthUser jwtAuthUser = JSON.parseObject(
+                Objects.toString(session.getAttributes().get(JwtAuthUser.class.getSimpleName())),
                 JwtAuthUser.class
         );
 
