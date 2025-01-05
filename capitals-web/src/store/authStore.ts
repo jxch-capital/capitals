@@ -26,14 +26,15 @@ export const useAuthStore = defineStore('auth', {
             }
         },
     },
-    persist: {
-        enabled: true,
-        strategies: [
-            {
-                key: 'user-store',
-                storage: sessionStorage,
-            },
-        ],
-    },
+    persist: true,
+    // persist: {
+    //     enabled: true,
+    //     strategies: [
+    //         {
+    //             key: 'user-store',
+    //             storage: sessionStorage,
+    //         },
+    //     ],
+    // },
 });
 
