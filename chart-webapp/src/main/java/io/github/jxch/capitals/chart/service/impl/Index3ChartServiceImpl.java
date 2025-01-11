@@ -78,7 +78,7 @@ public class Index3ChartServiceImpl implements Index3ChartService, KeyGenerator 
     public BufferedImage fearGreed(FearGreedParam param) {
         var fg = datavizGraphDataApi.graphData().getFearAndGreedHistorical();
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        fg.getData().stream().sorted(Comparator.comparing(DatavizGraphDataRes.XYData::getX).reversed())
+        fg.getData().stream().sorted(Comparator.comparing(DatavizGraphDataRes.XYData::getX))
                 .forEach(data -> dataset.addValue(data.getY(), "FearGreed", data.getY()));
         JFreeChart chart = ChartFactory.createLineChart(fg.getRating().toUpperCase() + " - " + String.format("%.1f", fg.getScore()), "Date", "FG", dataset);
 
