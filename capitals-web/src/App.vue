@@ -1,6 +1,10 @@
 <script setup lang="ts">
-import {darkTheme} from 'naive-ui'
+import {provide} from "vue";
 import Main from './components/Main.vue'
+import {darkTheme} from 'naive-ui'
+import {THEME_KEY} from 'vue-echarts';
+
+provide(THEME_KEY, 'dark');
 </script>
 
 <template>

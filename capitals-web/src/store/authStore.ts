@@ -25,6 +25,9 @@ export const useAuthStore = defineStore('auth', {
                 return null;
             }
         },
+        getToken() {
+            return this.user?.access_token;
+        }
     },
     persist: true,
     // persist: {

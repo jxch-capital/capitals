@@ -68,6 +68,7 @@ const routes: RouteMenu[] = [
         component: () => import('@/components/RApiDoc.vue'),
         props: () => ({
             apiUrl: import.meta.env.VITE_API_STOCK4J_URL,
+            serverUrl: import.meta.env.VITE_API_STOCK4J_SERVER_URL,
         }),
     }
 ];

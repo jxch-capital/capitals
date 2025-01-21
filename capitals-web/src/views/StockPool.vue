@@ -5,6 +5,7 @@ import {NButton, useMessage} from 'naive-ui'
 import type {DataTableColumns} from 'naive-ui'
 import type {StockPool} from "@/api/stockPool.ts";
 import StockPoolEdit from "@/components/StockPoolEdit.vue";
+import StockPoolBubbleEChart from "@/components/StockPoolBubbleEChart.vue";
 
 const createStockPoolParam = ref({
   name: '股票池名称',
@@ -114,7 +115,7 @@ onMounted(() => {
                       :pagination="stockPoolTablePagination" :bordered="false"/>
       </n-card>
       <n-card>
-        todo 气泡图
+        <StockPoolBubbleEChart />
       </n-card>
     </n-space>
   </n-space>
