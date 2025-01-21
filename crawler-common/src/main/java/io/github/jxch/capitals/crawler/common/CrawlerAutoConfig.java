@@ -23,7 +23,7 @@ public class CrawlerAutoConfig {
     private String proxyType;
     @Value("${crawler.proxy.host:localhost}")
     private String proxyHost;
-    @Value("${crawler.proxy.port:10809}")
+    @Value("${crawler.proxy.port:10808}")
     private int proxyPort;
 
     @Bean(OK_HTTP_CLIENT)

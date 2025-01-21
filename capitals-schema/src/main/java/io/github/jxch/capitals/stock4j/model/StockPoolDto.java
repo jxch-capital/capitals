@@ -14,6 +14,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
+import java.util.Arrays;
+import java.util.List;
+
 
 @Data
 @Builder
@@ -40,4 +43,10 @@ public class StockPoolDto {
     @NotNull(message = "创建股票池时，股票引擎不能为空", groups = CreateGroup.class)
     @Schema(description = "股票引擎, 默认 DEFAULT，全部支持", example = "DEFAULT")
     private StockEngine engine = StockEngine.DEFAULT;
+
+    @Schema(description = "股票代码列表")
+    public List<String> getCodeList() {
+        return Arrays.stream(codes.split(",")).toList();
+    }
+
 }

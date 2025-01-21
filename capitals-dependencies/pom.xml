@@ -173,22 +173,33 @@
         <!--            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>-->
         <!--        </repository>-->
 
+        <!--        <repository>-->
+        <!--            <id>nexus3</id>-->
+        <!--            <name>Internal Release Repository</name>-->
+        <!--            <url>http://localhost:38081/repository/maven-releases/</url>-->
+        <!--        </repository>-->
+        <!--        <snapshotRepository>-->
+        <!--            <id>nexus3</id>-->
+        <!--            <name>Internal Snapshot Repository</name>-->
+        <!--            <url>http://localhost:38081/repository/maven-snapshots/</url>-->
+        <!--        </snapshotRepository>-->
+
         <repository>
             <id>nexus3</id>
             <name>Internal Release Repository</name>
-            <url>http://localhost:38081/repository/maven-releases/</url>
+            <url>https://pi-nexus3.jiangxicheng.online/repository/maven-releases/</url>
         </repository>
         <snapshotRepository>
             <id>nexus3</id>
             <name>Internal Snapshot Repository</name>
-            <url>http://localhost:38081/repository/maven-snapshots/</url>
+            <url>https://pi-nexus3.jiangxicheng.online/repository/maven-snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
 
     <repositories>
         <repository>
             <name>nexus3</name>
-            <url>http://localhost:38081/repository/maven-public</url>
+            <url>https://pi-nexus3.jiangxicheng.online/repository/maven-public</url>
             <id>nexus3</id>
             <snapshots>
                 <enabled>true</enabled>
