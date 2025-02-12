@@ -7,6 +7,8 @@ import type {StockPool} from "@/api/stockPool.ts";
 import StockPoolEdit from "@/components/StockPoolEdit.vue";
 import StockPoolBubbleEChart from "@/components/StockPoolBubbleEChart.vue";
 
+const stockPoolIds = ref([] as number[])
+const dailyIntervals = ref([5, 20, 40])
 const createStockPoolParam = ref({
   name: '股票池名称',
   codes: 'SPY,QQQ',
@@ -49,6 +51,7 @@ const handleSelectEngine = (key: string) => {
 };
 const handleSelectStockPool = (key: string) => {
   currentStockPool.value = stockPools.value.find(item => item.name === key) ?? stockPools.value[0];
+  stockPoolIds.value = [currentStockPool.value.id as number];
 };
 const findAllEngines = () => {
   api.stock4j.engines().then(res => {
@@ -68,6 +71,7 @@ const findAllStockPools = () => {
       return {"key": item.name, "label": item.name}
     });
     currentStockPool.value = stockPools.value[0];
+    stockPoolIds.value = [currentStockPool.value.id as number];
   }).finally(() => {
     findLoading.value = false;
   });
@@ -104,9 +108,14 @@ onMounted(() => {
           <n-input placeholder="名称" v-model:value="createStockPoolParam.name"/>
           <n-input placeholder="代码" v-model:value="createStockPoolParam.codes"/>
         </n-space>
-        <n-dropdown trigger="hover" :options="stockPoolOptions" @select="handleSelectStockPool">
-          <n-button>{{ currentStockPool.name }}</n-button>
-        </n-dropdown>
+        <n-space>
+          <n-input-number placeholder="Short" v-model:value="dailyIntervals[0]"/>
+          <n-input-number placeholder="Middle" v-model:value="dailyIntervals[1]"/>
+          <n-input-number placeholder="Long" v-model:value="dailyIntervals[2]"/>
+          <n-dropdown trigger="hover" :options="stockPoolOptions" @select="handleSelectStockPool">
+            <n-button>{{ currentStockPool.name }}</n-button>
+          </n-dropdown>
+        </n-space>
       </n-space>
     </n-card>
     <n-space horizontal>
@@ -115,7 +124,7 @@ onMounted(() => {
                       :pagination="stockPoolTablePagination" :bordered="false"/>
       </n-card>
       <n-card>
-        <StockPoolBubbleEChart />
+        <StockPoolBubbleEChart :stock-pool-ids="stockPoolIds" :daily-intervals="dailyIntervals"/>
       </n-card>
     </n-space>
   </n-space>
