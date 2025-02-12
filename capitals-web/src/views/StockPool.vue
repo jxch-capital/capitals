@@ -9,6 +9,7 @@ import StockPoolBubbleEChart from "@/components/StockPoolBubbleEChart.vue";
 
 const stockPoolIds = ref([] as number[])
 const dailyIntervals = ref([5, 20, 40])
+const labelSwitch = ref(true)
 const createStockPoolParam = ref({
   name: '股票池名称',
   codes: 'SPY,QQQ',
@@ -109,6 +110,8 @@ onMounted(() => {
           <n-input placeholder="代码" v-model:value="createStockPoolParam.codes"/>
         </n-space>
         <n-space>
+          <n-text>显示名称：</n-text>
+          <n-switch v-model:value="labelSwitch" />
           <n-input-number placeholder="Short" v-model:value="dailyIntervals[0]"/>
           <n-input-number placeholder="Middle" v-model:value="dailyIntervals[1]"/>
           <n-input-number placeholder="Long" v-model:value="dailyIntervals[2]"/>
@@ -124,7 +127,7 @@ onMounted(() => {
                       :pagination="stockPoolTablePagination" :bordered="false"/>
       </n-card>
       <n-card>
-        <StockPoolBubbleEChart :stock-pool-ids="stockPoolIds" :daily-intervals="dailyIntervals"/>
+        <StockPoolBubbleEChart :stock-pool-ids="stockPoolIds" :daily-intervals="dailyIntervals" :label-switch="labelSwitch"/>
       </n-card>
     </n-space>
   </n-space>

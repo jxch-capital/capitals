@@ -4,7 +4,7 @@ import type {EChartsOption} from 'echarts';
 import api from "@/api";
 import chroma from 'chroma-js';
 
-const props = defineProps<{ stockPoolIds: number[], dailyIntervals: number[] }>();
+const props = defineProps<{ stockPoolIds: number[], dailyIntervals: number[], labelSwitch: boolean }>();
 
 const option = ref<EChartsOption>({
   legend: {
@@ -29,6 +29,49 @@ const option = ref<EChartsOption>({
       }
     },
     scale: true
+  },
+  tooltip: {
+    trigger: 'item',
+    backgroundColor: '#333333',
+    textStyle: {
+      color: 'snow',
+      fontSize: 12
+    },
+    formatter: function (param: any) {
+      const data = param.data;
+      const scale = chroma.scale(['#ff0000', '#ffa500', '#00ff00']).domain([-0.4, 0, 0.4]);
+
+      const formatPercentage = (value: number) => {
+        return value !== null ? `${(value * 100).toFixed(2)}%` : "N/A";
+      };
+
+      return `
+    ${param["marker"]} ${data[3]} - ${data[4]}
+    <table style="width: 100%; border-collapse: collapse; text-align: left;">
+      <tbody>
+        <tr>
+          <td style="padding: 4px 8px; text-align: left;">Short</td>
+          <td style="padding: 4px 8px; text-align: right; background-color: ${scale(data[2]).toString()};">
+            ${formatPercentage(data[2])}
+          </td>
+        </tr>
+        <tr>
+          <td style="padding: 4px 8px; text-align: left;">Middle</td>
+          <td style="padding: 4px 8px; text-align: right; background-color: ${scale(data[0]).toString()};">
+            ${formatPercentage(data[0])}
+          </td>
+        </tr>
+        <tr>
+          <td style="padding: 4px 8px; text-align: left;">Long</td>
+          <td style="padding: 4px 8px; text-align: right; background-color: ${scale(data[1]).toString()};">
+            ${formatPercentage(data[1])}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  `;
+    }
+
   },
   series: []
 });
@@ -55,7 +98,7 @@ const update = () => {
           return Math.min(Math.max(Math.sqrt(Math.abs(data[2]) * 10000), 10), 80);
         },
         label: {
-          show: true,
+          show: props.labelSwitch.valueOf(),
           formatter: function (param: any) {
             return param["data"][3];
           },
