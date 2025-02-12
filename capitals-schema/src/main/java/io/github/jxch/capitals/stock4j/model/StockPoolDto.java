@@ -1,5 +1,6 @@
 package io.github.jxch.capitals.stock4j.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.github.jxch.capitals.stock4j.type.StockEngine;
 import io.github.jxch.capitals.valid.CreateGroup;
 import io.github.jxch.capitals.valid.DeleteGroup;
@@ -44,6 +45,7 @@ public class StockPoolDto {
     @Schema(description = "股票引擎, 默认 DEFAULT，全部支持", example = "DEFAULT")
     private StockEngine engine = StockEngine.DEFAULT;
 
+    @JsonIgnore
     @Schema(description = "股票代码列表")
     public List<String> getCodeList() {
         return Arrays.stream(codes.split(",")).toList();
