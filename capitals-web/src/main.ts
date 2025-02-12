@@ -1,4 +1,4 @@
-import {createApp, provide} from 'vue'
+import {createApp} from 'vue'
 import {createPinia} from 'pinia';
 import piniaPluginPersistedState from 'pinia-plugin-persistedstate';
 import './style.css'
