@@ -8,12 +8,12 @@ const props = defineProps<{ stockPoolIds: number[], dailyIntervals: number[], la
 
 const option = ref<EChartsOption>({
   legend: {
-    right: '10%',
+    right: '3%',
     top: '3%',
   },
   grid: {
-    left: '8%',
-    top: '10%'
+    left: '3%',
+    top: '5%'
   },
   xAxis: {
     splitLine: {

@@ -97,7 +97,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <n-space vertical size="small">
+  <n-space vertical size="small" style="width: 100%;">
     <n-card>
       <n-space justify="space-between">
         <n-space>
@@ -111,7 +111,7 @@ onMounted(() => {
         </n-space>
         <n-space>
           <n-text>显示名称：</n-text>
-          <n-switch v-model:value="labelSwitch" />
+          <n-switch v-model:value="labelSwitch"/>
           <n-input-number placeholder="Short" v-model:value="dailyIntervals[0]"/>
           <n-input-number placeholder="Middle" v-model:value="dailyIntervals[1]"/>
           <n-input-number placeholder="Long" v-model:value="dailyIntervals[2]"/>
@@ -121,13 +121,14 @@ onMounted(() => {
         </n-space>
       </n-space>
     </n-card>
-    <n-space horizontal>
-      <n-card>
+    <n-space horizontal justify="space-between">
+      <n-card style="width: 22vw; height: 93vh;">
         <n-data-table size="small" :ellipsis="true" :columns="stockPoolTableColumns" :data="stockPoolTableData"
                       :pagination="stockPoolTablePagination" :bordered="false"/>
       </n-card>
-      <n-card>
-        <StockPoolBubbleEChart :stock-pool-ids="stockPoolIds" :daily-intervals="dailyIntervals" :label-switch="labelSwitch"/>
+      <n-card style="width: 75vw; height: 93vh;">
+        <StockPoolBubbleEChart style="width: 73vw; height: 90vh;" :stock-pool-ids="stockPoolIds"
+                               :daily-intervals="dailyIntervals" :label-switch="labelSwitch"/>
       </n-card>
     </n-space>
   </n-space>
