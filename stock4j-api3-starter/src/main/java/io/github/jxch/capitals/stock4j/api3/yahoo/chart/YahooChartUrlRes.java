@@ -36,7 +36,7 @@ public class YahooChartUrlRes {
         try {
             return getTimestamp().size();
         } catch (NullPointerException e) {
-            throw new StockServiceNoResException("股票信息为空，请检查入参是否合理");
+            throw new StockServiceNoResException(code + " 股票信息为空，请检查入参是否合理");
         }
     }
 

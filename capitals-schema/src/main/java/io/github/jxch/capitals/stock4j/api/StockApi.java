@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 import java.util.List;
+import java.util.Objects;
 
 @Tag(name = "股票查询接口", description = "股票查询通用接口")
 public interface StockApi {
@@ -24,7 +25,13 @@ public interface StockApi {
                 .interval(param.getInterval())
                 .build()).toList();
 
-        List<StockRes> stockRes = params.stream().map(this::query).toList();
+        List<StockRes> stockRes = params.stream().map(item -> {
+            try {
+                return query(item);
+            } catch (Exception e) {
+                return null;
+            }
+        }).filter(Objects::nonNull).toList();
 
         StockBatchRes stockBatchRes = new StockBatchRes();
         stockBatchRes.addAllByStockRes(stockRes);
